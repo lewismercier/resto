@@ -4,7 +4,7 @@ namespace Models;
 //classe mère de tous les models
 
 
-// pour ne pas faire un new databases
+// abstract pour ne pas faire un new databases
 
 abstract class Database {
 	

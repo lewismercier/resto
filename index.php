@@ -1,10 +1,11 @@
 <?php
 
 //autoloader
-include "controllers/AccueilController.php";
+include "controllers/AccueilControlleurs.php";
+include "Controllers/Admin.php"
 
-include 'models/Database.php';
-include "models/Jeux.php";
+include 'models/Databases.php';
+include "models/Admin.php";
 
 
 // si y as pas page ds le get

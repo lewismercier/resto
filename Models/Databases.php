@@ -6,7 +6,7 @@ namespace Models;
 
 // pour ne pas faire un new databases
 
-abstract class Database {
+abstract class Databases {
 	
 	// accesible aux enfants
 	protected $bdd;

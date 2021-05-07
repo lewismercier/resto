@@ -18,6 +18,7 @@ class admin{
      if($Admin) 
      
      {  // si le pw est bon (post pour le formulaire)($admin pour la base de donnée, on met le nom utilisé pour le champ)
+     
        if(password_verify($_POST["password"]$Admin["password"])==true)
        {
          $_SESSION['admin']=$Admin["login"];

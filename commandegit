@@ -1,0 +1,22 @@
+Invite de commande GIT 
+
+(ide) Open terminal here + cd 'file path'
+
+cd ou dir : rentrer dans un fichier
+ls : lister les fichier dans le dossier select
+mkdir : crea de dossier
+
+git init / git add / git commit : save file
+git log : details file
+git add - A : ajouter tous les file modif
+git status : liste dossier save ou non
+
+git commit -m : faire un message
+git commit -am : ajout&commit d'un fichier (si modif de fichier existant)
+git commit - help
+git checkout (avec 7 premier chiffre de l'id commit) : revenir a une save précédente
+
+git checkout master : revenir sur branch master
+git branch : liste des branches
+git branch slider : crea d'une branch
+git merge slider : fusion de la branch slider

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  
+  <title>Configuration</title>
+</head>
+<body>
+  
+  <h2>Configuration</h2>
+  
+  <p>Ajouter du contenu textuel</p>
+  <a href="index.php?page=Ajouter">ADD A CONTENT</a>
+  <table class="table"> <!--tableau config-->
+ <tr class="tr">
+   <th>Name</th>
+   <th>Content</th>
+   <th>Modifier</th>
+   <th>Supprimer</th>
+ </tr>
+
+ 
+    		<?php foreach($config as $configs): ?>
+		
+		 <tr>
+		   
+	    
+	     <td><?= htmlspecialchars($configs['name']) ?></td>
+	     <td><?= htmlspecialchars($configs['content']) ?></td>
+	     <td><a href=index.php?page=modifier&id=<?=$configs['id'] ?>><i class="fas fa-pen-nib"></i></a></td>
+       <td><a href=index.php?page=supprimer&id=<?=$configs['id'] ?>><i class="fas fa-trash-alt"></i></a></td>
+	    </tr>
+		
+		<?php endforeach; ?>
+  </table>
+  
+  
+  
+</body>
+</html>

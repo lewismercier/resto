@@ -20,6 +20,7 @@ class Admin
                    if (password_verify($_POST["password"],$Admin["password"])==true)
                    {
                        //affectation le login à la session admin
+                       
                        $_SESSION['admin']=$Admin["login"];
                        header("location:index.php?page=Dashboard");
                        exit;
@@ -41,5 +42,20 @@ class Admin
    
     
     }
-// >>>>>>> 790186c201114fa724f468febef14ba2bba561c6
+    public function deconexion()
+    {
+        session_destroy();
+
+         header("location:index.php?page=Admin");
+         exit;
+
+    }
+    public function Dashboard()
+{
+        
+       
+        //Appel de notre Template dashbord
+    $template='Dashboard.phtml';
+    include 'views/layout.phtml';
+    }
 }

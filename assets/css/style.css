@@ -48,7 +48,20 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
+.table {
+  width:70%;
+  border: 1px solid #999;
+  padding: 0.5rem;
+  text-align: center;
+}
+.table{
+  background-color:	#F5F5DC;
+}
+.th{
+  border: 1px solid #999;
+  padding: 0.5rem;
+  text-align: center;	
+}
 /* *****************************************************************
 GENERAL
 ***************************************************************** */
@@ -613,6 +626,13 @@ aside ul {
 
 .footer a {
 	color: white;
+}
+
+/***********************
+BACK OFFICE
+****************/
+.miniatures{
+	width:75px;
 }
 
 /* *****************************************************************

@@ -13,7 +13,7 @@ spl_autoload_register(function($class){//$class = Controllers\AccueilController 
 
 session_start();
 /*
-
+si pas de autoloader 
 include "Controllers/AccueilControllers.php";
 include "Controllers/Admin.php";
 
@@ -24,9 +24,9 @@ include "Models/Admin.php";*/
 // si y as pas page ds le get
 if(!isset($_GET['page']))
 {
-	//lancer la page d'accueil
-	$controller = new Controllers\AccueilController();
-	$controller -> display();
+    //lancer la page d'accueil
+    $controller = new Controllers\AccueilControllers();
+    $controller -> display();
 }
 else
 {
@@ -45,5 +45,76 @@ else
 			$controller = new Controllers\Admin();
 			$controller -> Dashboard();
 			break;
-	}
+			
+		case'Slider':
+			$controller = new Controllers\Slider();
+			$controller -> display();
+			break;
+			
+		case'submit':
+			$controller = new Controllers\Slider();
+			$controller -> submit();
+			break;
+			
+		case'modifySlider':
+			$controller = new Controllers\Slider();
+			$controller -> modify($_GET['id']);
+			break;
+			
+		case'deleteSlider':
+			$controller = new Controllers\Slider();
+			$controller -> trash($_GET['id']);
+			break;
+			
+			
+		case'MealCategory':
+			$controller = new Controllers\MealCategory();
+			$controller -> display();
+			break;
+			
+		case'submitCategory':
+			$controller = new Controllers\MealCategory();
+			$controller -> submit();
+			break;
+		
+		case'modifyCategory':
+			$controller = new Controllers\MealCategory();
+			$controller -> modify($_GET['id']);
+			break;
+			
+		case'deleteCategory':
+			$controller = new Controllers\MealCategory();
+			$controller -> trash($_GET['id']);
+
+        case'Slider':
+            $controller = new Controllers\Slider();
+            $controller -> display();
+            break;
+
+        case'submit':
+            $controller = new Controllers\Slider();
+            $controller -> submit();
+            break;
+            
+        case'Config':
+            $controller = new Controllers\Config();
+            $controller -> display();
+            break;  
+            
+        case'Ajouter':
+            $controller = new Controllers\Config();
+            $controller -> addConfig();
+            break;
+            
+        case'modifier':
+            $controller = new Controllers\Config();
+            $controller -> modifConfig($_GET['id']);
+            break;
+            
+        case'supprimer':
+            $controller = new Controllers\Config();
+            $controller -> suppConfig($_GET['id']);
+            break;  
+            
+}
 }

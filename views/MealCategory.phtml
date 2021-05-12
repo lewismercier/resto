@@ -1,0 +1,50 @@
+
+        <section>
+                <h1>Meal Category Management</h1>
+                
+                <button>SQLinsert into</button>
+                <button>SQL update</button>
+                <button>SQL delete</button>
+                <button>Number of lines touched by SQL request</button>
+        </section>
+                
+                <a href ="index.php?page=submitCategory"><i class="fas fa-plus"></i> Create a meal category</a>
+            
+        <table>
+                <tr>
+                    <td>id</td>
+                    <td>name</td>
+                    <td>is_dish</td>
+                    <td>description</td>
+                    <td>Modify</td>
+                    <td>Delete</td>
+                </tr>
+                <!--Tu as besoin juste d'un seul foreach et c'est bon-->
+                <?php foreach($mealCategory as $category):?>
+                <tr>
+                    <td>
+                    <?= htmlspecialchars($category['id'])?> 
+                    </td>
+                    <td>
+                    <?= htmlspecialchars($category['name'])?> 
+                    </td>
+                    <td>
+                    <?= htmlspecialchars($category['is_dish'])?> 
+                    </td>
+                    <td>
+                    <?= htmlspecialchars($category['description'])?> 
+                    </td>
+                    
+                    
+                    <td><a class="modify" href="index.php?page=modifyCategory&id=<?= htmlspecialchars($category['id']) ?> "><i class="fas fa-pen-nib"></i></a></td>
+                    
+                    <!-- lien qui appelle la page trash et qui transmet l'id de la categorie à supprimer  -->
+                    
+                    <td><a class="trash" href="index.php?page=deleteCategory&id=<?= htmlspecialchars($category['id']) ?>"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+               
+        </table>
+             
+        <p>Meal Category list classified by reverse chronological order ( <?=count($mealCategory)?>  in total)</p>

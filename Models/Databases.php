@@ -8,7 +8,7 @@ namespace Models;
 
 abstract class Databases {
 	
-	// accesible aux enfants
+	// accessible aux enfants
 	protected $bdd;
 	
 		
@@ -20,8 +20,18 @@ abstract class Databases {
 	public function findAll(string $req,array $params = []):array
 	{
 		$query = $this -> bdd -> prepare($req);
-		$query -> execute($params);
+	
+	try{
+		$query -> execute($params);	
 		return $query -> fetchAll(\PDO::FETCH_ASSOC);
+		}
+  	catch(\Exception $e)
+		{
+			 
+			return $e->getMessage();
+		}
+		
+		
 	}
 	
 	
@@ -29,8 +39,18 @@ abstract class Databases {
 	public function findOne(string $req,array $params = []):array
 	{
 		$query = $this -> bdd -> prepare($req);
+		
+	try{
+			
 		$query -> execute($params);
 		return $query -> fetch(\PDO::FETCH_ASSOC);
+		
+		}
+	catch(\Exception $e)
+		{
+			 
+			return $e->getMessage();
+		}
 	}
 	
 	
@@ -38,15 +58,17 @@ abstract class Databases {
 	public function insertData(string $req, array $params=[]):string
 	    {
 	         $query=$this->bdd->prepare($req);
-	         
-	         if($query->execute($params))
-	         {
-	             return 'success';
-	         }
-	         else
-	         {
-	             return 'error';
-	         }
+	        
+	try{
+		
+	        $query->execute($params));
+	        
+	}
+    catch(\Exception $e)
+		{
+			 
+			return $e->getMessage();
+		}  
 	    }
     
     
@@ -54,6 +76,9 @@ abstract class Databases {
     public function updateData(string $req, array $params=[]):string
     {
          $query=$this->bdd->prepare($req);
+         
+     try{
+		 
          if($query->execute($params))
          {
              return 'success';
@@ -62,10 +87,20 @@ abstract class Databases {
          {
              return 'error';
          }
+     }
+         
+    catch(\Exception $e)
+		{
+			 
+			return $e->getMessage();
+		} 
     }
     public function deleteData(string $req, array $params=[]):string
     {
        $query=$this->bdd->prepare($req);
+       
+    try{
+		 
          if($query->execute($params))
          {
              return 'success';
@@ -75,6 +110,14 @@ abstract class Databases {
              return 'error';
          } 
     }
-}
+         
+    catch(\Exception $e)
+		{
+			 
+			return $e->getMessage();
+		}  
+    }
+    
+
 	
 	

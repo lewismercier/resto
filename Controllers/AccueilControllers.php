@@ -2,19 +2,26 @@
 
 namespace Controllers;
 
-class AccueilController
+class AccueilControllers
 {
+	private $modelOpening;
+	
+	public function __construct()
+	{
+		// Je vais chercher tout mes fonctions du model pour modelOpening
+		$this -> modelOpening = new \Models\Opening_hour();
+	}
+	
+	
 	public function display()
 	{
-		//méthode qui permet d'afficher la page d'accueil
+	
 		
-		$model = new \Models\Jeux();
-		$jeux = $model -> getAllGames();
-		
-		
-		//appeler la vue 
+		$open = $this -> modelOpening -> getOpen(); 
 		
 		$template = "views/accueil.phtml";
+		
+		
 		include 'views/layout.phtml';
 
 

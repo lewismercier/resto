@@ -6,7 +6,7 @@ namespace Models;
 
 // abstract pour ne pas faire un new databases
 
-abstract class Database {
+abstract class Databases {
 	
 	// accesible aux enfants
 	protected $bdd;
@@ -34,7 +34,7 @@ abstract class Database {
 	}
 	
 	
-	// prend la requette
+	// recois la requete et envoi les params pour la requete
 	public function insertData(string $req, array $params=[]):string
 	    {
 	         $query=$this->bdd->prepare($req);

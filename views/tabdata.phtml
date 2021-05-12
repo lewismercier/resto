@@ -1,0 +1,33 @@
+
+
+    <h1>TABLEAU HEURES JOURS</h1>
+    
+    <a href="index.php?page=ajouterOpening">Ajouter un horaire</a>
+				
+    <table>
+        <tr>
+            <th> Id </th>
+            <th> Day </th>
+            <th> Hour </th>
+            <th> Modifier </th>
+            <th> Supprimer </th>
+        </tr>
+        
+    
+        
+        <?php foreach($open as $items):?>
+        
+        <tr>
+            <td><?= htmlspecialchars($items['id']);?></td>
+            <td><?= htmlspecialchars($items['days']);?></td>
+            <td><?= htmlspecialchars($items['hours']);?></td>
+           
+           <!-- ds page j envoi modifOpening et id de la ligne ($items['id']) -->
+            <td><a href="index.php?page=modifOpening&id=<?= $items['id'] ?>"><i class="fas fa-pen-nib"></i></a></td>
+            <td><a href="index.php?page=deleteOpening&id=<?= $items['id'] ?>"><i class="fas fa-trash-alt"></i></a></td>
+        </tr>
+        
+         <?php endforeach;?>
+         
+        
+   </table>

@@ -723,3 +723,37 @@ VERSION DESKTOP
 		width: 70%;
 	}
 }
+/* *****************************************************************
+BACK OFFICE
+***************************************************************** */
+.administration, .leftmenu{
+	display:flex;
+}
+.administration{
+	
+	flex-direction: row;
+    align-items: flex-start;
+}
+.leftmenu {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	flex-direction:column;
+	
+}
+.leftmenu li{
+	
+	flex-grow:1;
+}
+.leftmenu a{
+	display:block;
+	padding:1em;
+	background-color:#ebe3db;
+	text-align: center;
+	margin-bottom:0.2em;
+	color:#00000;
+	width:10em;
+}
+.leftmenu a:hover{
+	background-color:#12c8ff;
+}

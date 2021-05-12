@@ -11,7 +11,7 @@ spl_autoload_register(function($class){//$class = Controllers\AccueilController 
 
 
 
-
+session_start();
 /*
 
 include "Controllers/AccueilControllers.php";
@@ -36,6 +36,14 @@ else
 		case'Admin':
 			$controller = new Controllers\Admin();
 			$controller -> connect();
+			break;
+		case'deco':
+			$controller = new Controllers\Admin();
+			$controller -> deconexion();
+			break;
+		case'Dashboard':
+			$controller = new Controllers\Admin();
+			$controller -> Dashboard();
 			break;
 	}
 }

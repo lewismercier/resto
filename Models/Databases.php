@@ -6,7 +6,8 @@ namespace Models;
 
 // abstract pour ne pas faire un new databases
 
-abstract class Databases {
+abstract class Databases
+{
 	
 	// accessible aux enfants
 	protected $bdd;
@@ -21,17 +22,16 @@ abstract class Databases {
 	{
 		$query = $this -> bdd -> prepare($req);
 	
-	try{
-		$query -> execute($params);	
-		return $query -> fetchAll(\PDO::FETCH_ASSOC);
+		try
+		{
+			$query -> execute($params);	
+			return $query -> fetchAll(\PDO::FETCH_ASSOC);
 		}
-  	catch(\Exception $e)
+	  	catch(\Exception $e)
 		{
 			 
 			return $e->getMessage();
 		}
-		
-		
 	}
 	
 	
@@ -40,13 +40,13 @@ abstract class Databases {
 	{
 		$query = $this -> bdd -> prepare($req);
 		
-	try{
+		try{
 			
-		$query -> execute($params);
-		return $query -> fetch(\PDO::FETCH_ASSOC);
+			$query -> execute($params);
+			return $query -> fetch(\PDO::FETCH_ASSOC);
 		
 		}
-	catch(\Exception $e)
+		catch(\Exception $e)
 		{
 			 
 			return $e->getMessage();
@@ -56,10 +56,10 @@ abstract class Databases {
 	
 	// recois la requete et envoi les params pour la requete
 	public function insertData(string $req, array $params=[]):string
-	    {
-	         $query=$this->bdd->prepare($req);
+	{
+		$query=$this->bdd->prepare($req);
 	        
-	try{
+		try{
 		
 	         if($query->execute($params))
 	         {
@@ -69,61 +69,61 @@ abstract class Databases {
 	         {
 	             return 'error';
 	         }
-	}
-    catch(\Exception $e)
+		}
+		catch(\Exception $e)
 		{
 			 
 			return $e->getMessage();
 		}  
-	    }
+	}
     
     
     
-    public function updateData(string $req, array $params=[]):string
-    {
-         $query=$this->bdd->prepare($req);
+	public function updateData(string $req, array $params=[]):string
+	{
+      	$query=$this->bdd->prepare($req);
          
-     try{
-		 
-         if($query->execute($params))
-         {
-             return 'success';
-         }
-         else
-         {
-             return 'error';
-         }
-     }
-         
-    catch(\Exception $e)
-		{
+		try{
 			 
+	         if($query->execute($params))
+	         {
+	             return 'success';
+	         }
+	         else
+	         {
+	             return 'error';
+	         }
+	     }
+         
+		catch(\Exception $e)
+		{
 			return $e->getMessage();
 		} 
     }
+    
     public function deleteData(string $req, array $params=[]):string
     {
-       $query=$this->bdd->prepare($req);
+		$query=$this->bdd->prepare($req);
        
-    try{
-		 
-         if($query->execute($params))
-         {
-             return 'success';
-         }
-         else
-         {
-             return 'error';
-         } 
-    }
-         
-    catch(\Exception $e)
+		try
 		{
 			 
+	         if($query->execute($params))
+	         {
+	             return 'success';
+	         }
+	         else
+	         {
+	             return 'error';
+	         } 
+		}
+	         
+		catch(\Exception $e)
+		{
+					 
 			return $e->getMessage();
 		}  
-    }
+	}
+	
+}
     
-
-	
-	

@@ -21,13 +21,6 @@ if(!isset($_GET['page']))
 else
 {
 
-	//tester le param page avec le switch
-	switch ($_GET['page'])
-	{
-		case'Admin':
-			$controller = new Controllers\Admin();
-			$controller -> connect();
-			break;
     //tester le param page avec le switch
     switch ($_GET['page'])
     {

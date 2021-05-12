@@ -21,7 +21,7 @@ include 'Models/Databases.php';
 include "Models/Admin.php";*/
 
 
-// si y as pas page ds le get
+
 if(!isset($_GET['page']))
 {
     //lancer la page d'accueil
@@ -30,21 +30,6 @@ if(!isset($_GET['page']))
 }
 else
 {
-<<<<<<< HEAD
-	//tester le param page avec le switch
-	switch ($_GET['page'])
-	{
-		case'Admin':
-			$controller = new Controllers\Admin();
-			$controller -> connect();
-			break;
-			
-		case'deco':
-			$controller = new Controllers\Admin();
-			$controller -> disconnect();
-			break;	
-			
-=======
     //tester le param page avec le switch
     switch ($_GET['page'])
     {
@@ -56,12 +41,10 @@ else
 			$controller = new Controllers\Admin();
 			$controller -> deconexion();
 			break;
->>>>>>> config
 		case'Dashboard':
 			$controller = new Controllers\Admin();
 			$controller -> Dashboard();
 			break;
-<<<<<<< HEAD
 			
 		case'Slider':
 			$controller = new Controllers\Slider();
@@ -102,8 +85,7 @@ else
 		case'deleteCategory':
 			$controller = new Controllers\MealCategory();
 			$controller -> trash($_GET['id']);
-	}
-=======
+	
         case'Slider':
             $controller = new Controllers\Slider();
             $controller -> display();
@@ -135,5 +117,4 @@ else
             break;  
             
 }
->>>>>>> config
 }

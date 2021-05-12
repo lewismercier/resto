@@ -54,7 +54,7 @@ abstract class Databases {
 	}
 	
 	
-	// prend la requette
+	// recois la requete et envoi les params pour la requete
 	public function insertData(string $req, array $params=[]):string
 	    {
 	         $query=$this->bdd->prepare($req);

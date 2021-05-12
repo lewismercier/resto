@@ -62,6 +62,3 @@ Chacun s'occupe d'une partie côté back office:
 - les horaires
 - 
 A chaque fois, on arrive sur un tableau nous affichant ce qui existe et dessus un bouton pour ajouter un nouveau. A côté de chaque existant, la possibilité de le modifier ou de le supprimer.
-
-
-#

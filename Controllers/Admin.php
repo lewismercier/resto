@@ -1,50 +1,60 @@
 <?php
-     
-                      //CONTROLLERS
-                      //reçoit la requête du visiteur
-                      
+
+
 namespace Controllers;
 
-class admin{
-  public function Connect(){  //si la personne se connecte,on vérifie que le formulaire existe
-    
-   if(isset($_POST)) 
+class Admin 
+{
+   public function Connect()
    {
-     $modelAdmin= new \Models\Admin(); // on instancie le admin dans le dossier model
-     
-     $Admin=$modelAdmin->getAdmin($_POST["login"]); //on obtient le login de admin
-     
-     
-     if($Admin) 
-     
-     {  // si le pw est bon (post pour le formulaire)($admin pour la base de donnée, on met le nom utilisé pour le champ)
-       if(password_verify($_POST["password"]$Admin["password"])==true)
-       {
-         $_SESSION['admin']=$Admin["login"];
-         header("location:index.php?page-Dashboard");
-         exit;
-         
-         
-       }
-       else 
-       {
-         $message="mauvais mot de passe";
-       }
        
-       else 
+       if (!empty($_POST["login"]))
        {
-         $message="login incorrect";
+           //instanciation du modèle Admin dans la variable $modelAdmin
+           $modelAdmin=new \Models\Admin();
+           
+           $Admin=$modelAdmin->getAdmin($_POST["login"]);
+           
+                if ($Admin) 
+                {   
+                    //vérifie le champ du form et le password dans bdd
+                   if (password_verify($_POST["password"],$Admin["password"])==true)
+                   {
+                       //affectation le login à la session admin
+                       
+                       $_SESSION['admin']=$Admin["login"];
+                       header("location:index.php?page=Dashboard");
+                       exit;
+                   }
+                   else
+                    {
+                        $message="mot de passe incorrect";
+                    }
        }
-     }
-   }
-    
-    
-    
-    
-    
-    
-    
+       else
+       {
+            $message="login incorrect"; 
+       }
+        
+    }    
+       
     $template='Admin.phtml';
     include 'views/layout.phtml';
-  }
+   
+    
+    }
+    public function deconexion()
+    {
+        session_destroy();
+         header("location:index.php?page=Admin");
+         exit;
+    }
+    public function Dashboard()
+    {
+        
+       
+        //Appel de notre Template dashbord
+    $template='Dashboard.phtml';
+    include 'views/layout.phtml';
+    }
 }

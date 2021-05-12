@@ -2,19 +2,19 @@
 
 namespace Controllers;
 
-class AccueilController
+class AccueilControllers
 {
 	public function display()
 	{
 		//méthode qui permet d'afficher la page d'accueil
 		
-		$model = new \Models\Jeux();
-		$jeux = $model -> getAllGames();
+		// $model = new \Models\Admin();
+		// $admin = $model -> getAllAdmin();
 		
 		
 		//appeler la vue 
 		
-		$template = "views/accueil.phtml";
+		$template = "accueil.phtml";
 		include 'views/layout.phtml';
 
 

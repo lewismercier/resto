@@ -1,0 +1,23 @@
+<h1>Category Management</h1>
+	<!-- si pas d'attribut action, par défaut, la soumission du formulaire fait un rechargement de la même page-->
+	<form method="post">
+		<p>
+			<label for="name">Category name</label>
+			<input type = "text" name = "name" id= "name" value="<?= (isset($mealCategory))?$mealCategory['name']:""?>">
+		</p>
+		
+		
+			<!--type radio-->
+		<p>Please select if it is a dish or not
+			<label for="Yes">Yes</label><input type="radio" id="is_dish" name="is_dish" value="1" <?= (isset($mealCategory) && $mealCategory['is_dish']==1)?'checked':""?> >
+        	<label for="No">No</label><input type="radio" id="is_dish" name="is_dish" value="0" <?= (isset($mealCategory) && $mealCategory['is_dish']==0)?'checked':""?>>
+        	
+		</p>
+		
+		<p>
+			<label for='description'>description</label>
+			<textarea placeholder="Describe meal category here..." name = "description" id="description"><?= (isset($mealCategory))?$mealCategory['description']:""?></textarea>
+		</p>
+		
+		<button type="submit">Modify/Create a meal category</button>
+	</form>

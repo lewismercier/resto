@@ -10,10 +10,10 @@ spl_autoload_register(function($class){//$class = Controllers\AccueilController 
 
 
 
-
+session_start();
 
 /*
-
+si pas de autoloader 
 include "Controllers/AccueilControllers.php";
 include "Controllers/Admin.php";
 
@@ -37,5 +37,55 @@ else
 			$controller = new Controllers\Admin();
 			$controller -> connect();
 			break;
+			
+		case'deco':
+			$controller = new Controllers\Admin();
+			$controller -> disconnect();
+			break;	
+			
+		case'Dashboard':
+			$controller = new Controllers\Admin();
+			$controller -> Dashboard();
+			break;
+			
+		case'Slider':
+			$controller = new Controllers\Slider();
+			$controller -> display();
+			break;
+			
+		case'submit':
+			$controller = new Controllers\Slider();
+			$controller -> submit();
+			break;
+			
+		case'modifySlider':
+			$controller = new Controllers\Slider();
+			$controller -> modify($_GET['id']);
+			break;
+			
+		case'deleteSlider':
+			$controller = new Controllers\Slider();
+			$controller -> trash($_GET['id']);
+			break;
+			
+			
+		case'MealCategory':
+			$controller = new Controllers\MealCategory();
+			$controller -> display();
+			break;
+			
+		case'submitCategory':
+			$controller = new Controllers\MealCategory();
+			$controller -> submit();
+			break;
+		
+		case'modifyCategory':
+			$controller = new Controllers\MealCategory();
+			$controller -> modify($_GET['id']);
+			break;
+			
+		case'deleteCategory':
+			$controller = new Controllers\MealCategory();
+			$controller -> trash($_GET['id']);
 	}
 }

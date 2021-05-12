@@ -1,0 +1,19 @@
+
+<h1>change the day and time</h1>
+
+<form method="post">
+	
+	<p>
+		<label for='day'>Changer le jour</label>
+		<input type="text" name="day" value=" <?=(isset($recupOpening))?$recupOpening['days']:"" ?>">
+	</p>
+	
+	<p>
+		<label for='hour'>Changer l'heure</label>
+		<input type="text" name="hour" value=" <?=(isset($recupOpening))?$recupOpening['hours']:"" ?>"
+	</p>
+	
+
+	<button type="submit">Envoyer</button>
+	
+</form>

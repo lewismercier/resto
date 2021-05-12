@@ -46,11 +46,13 @@ class Admin
     public function deconexion()
     {
         session_destroy();
-        header("location:index.php?page=Admin");
-        exit;
+
+         header("location:index.php?page=Admin");
+         exit;
+
     }
     public function Dashboard()
-    {
+{
         
        
         //Appel de notre Template dashbord

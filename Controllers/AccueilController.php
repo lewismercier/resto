@@ -2,7 +2,7 @@
 
 namespace Controllers;
 
-class AccueilController
+class AccueilControllers
 {
 	public function display()
 	{
@@ -13,7 +13,7 @@ class AccueilController
 		
 		//appeler la vue 
 		
-		$template = "views/accueil.phtml";
+		$template = "accueil.phtml";
 		include 'views/layout.phtml';
 
 

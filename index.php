@@ -24,12 +24,13 @@ include "Models/Admin.php";*/
 // si y as pas page ds le get
 if(!isset($_GET['page']))
 {
-	//lancer la page d'accueil
-	$controller = new Controllers\AccueilController();
-	$controller -> display();
+    //lancer la page d'accueil
+    $controller = new Controllers\AccueilControllers();
+    $controller -> display();
 }
 else
 {
+<<<<<<< HEAD
 	//tester le param page avec le switch
 	switch ($_GET['page'])
 	{
@@ -43,10 +44,24 @@ else
 			$controller -> disconnect();
 			break;	
 			
+=======
+    //tester le param page avec le switch
+    switch ($_GET['page'])
+    {
+        case'Admin':
+            $controller = new Controllers\Admin();
+            $controller -> connect();
+            break;
+        case'deco':
+			$controller = new Controllers\Admin();
+			$controller -> deconexion();
+			break;
+>>>>>>> config
 		case'Dashboard':
 			$controller = new Controllers\Admin();
 			$controller -> Dashboard();
 			break;
+<<<<<<< HEAD
 			
 		case'Slider':
 			$controller = new Controllers\Slider();
@@ -88,4 +103,37 @@ else
 			$controller = new Controllers\MealCategory();
 			$controller -> trash($_GET['id']);
 	}
+=======
+        case'Slider':
+            $controller = new Controllers\Slider();
+            $controller -> display();
+            break;
+
+        case'submit':
+            $controller = new Controllers\Slider();
+            $controller -> submit();
+            break;
+            
+        case'Config':
+            $controller = new Controllers\Config();
+            $controller -> display();
+            break;  
+            
+        case'Ajouter':
+            $controller = new Controllers\Config();
+            $controller -> addConfig();
+            break;
+            
+        case'modifier':
+            $controller = new Controllers\Config();
+            $controller -> modifConfig($_GET['id']);
+            break;
+            
+        case'supprimer':
+            $controller = new Controllers\Config();
+            $controller -> suppConfig($_GET['id']);
+            break;  
+            
+}
+>>>>>>> config
 }

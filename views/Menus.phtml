@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  
+  <title>Menus</title>
+</head>
+<body>
+  
+  <h2>Menus</h2>
+  
+ 
+  <a href="index.php?page=Ajouter">ADD A MENUS</a>
+  <table class="table"> <!--tableau menu-->
+ <tr class="tr">
+   <th>title</th>
+   <th>src</th>
+   <th>alt</th>
+   <th>price</th>
+   <th>modifier</th>
+   <th>supprimer</th>
+   
+ </tr>
+
+ 
+    		<?php foreach($menu as $menus): ?>
+		
+		 <tr>
+		   
+	    
+	     <td><?= htmlspecialchars($menus['title']) ?></td>
+	     <td><?= htmlspecialchars($menus['src']) ?></td>
+	     <td><?= htmlspecialchars($menus['alt']) ?></td>
+	     <td><?= htmlspecialchars($menus['price']) ?></td>
+	     
+	     <td><a href=index.php?page=modifier&id=<?=$menus['id'] ?>><i class="fas fa-pen-nib"></i></a></td>
+       <td><a href=index.php?page=supprimer&id=<?=$configs['id'] ?>><i class="fas fa-trash-alt"></i></a></td>
+	    </tr>
+		
+		<?php endforeach; ?>
+  </table>
+  
+  
+  
+</body>
+</html>

@@ -136,6 +136,29 @@ else
 			$controller = new Controllers\Opening_hour();
 			$controller -> submit();
 			break;
+			
+			//MENUS
+			
+	    case'Menus':
+            $controller = new Controllers\Menus();
+            $controller -> display();
+            break;  
+            
+        case'Ajouter':
+            $controller = new Controllers\Menus();
+            $controller -> addMenus();
+            break;
+            
+        case'modifier':
+            $controller = new Controllers\Menus();
+            $controller -> modifMenus($_GET['id']);
+            break;
+            
+        case'supprimer':
+            $controller = new Controllers\Menus();
+            $controller -> suppMenus($_GET['id']);
+            break;  
+        
 		
 	}
 

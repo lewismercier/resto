@@ -8,7 +8,7 @@ namespace Models;
 
 abstract class Databases {
 	
-	// accesible aux enfants
+	// accessible aux enfants
 	protected $bdd;
 	
 		

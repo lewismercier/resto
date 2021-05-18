@@ -124,7 +124,7 @@ BACK OFFICE
 	flex-direction: row;
     align-items: flex-start;
     justify-content: space-around;
-    background-color:rgba(255, 255, 255,0.6);
+    background-color:rgba(255, 255, 255,0.7);
 }
 .administration div{
 	width:70%;
@@ -223,6 +223,11 @@ BACK OFFICE
 }
 .bg-standar{
 	background-color:#ebe3db;
+}
+.btn-add{
+	background-color:#7dd971;
+	color:white;
+	
 }
 /* *****************************************************************
 HEADER

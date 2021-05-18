@@ -10,9 +10,9 @@ class AccueilControllers extends Footer
 	public $city;
 	public $tel;
 	private $Slider;
-	private $Config;
-	public $logo;
 	
+	public $logo;
+	use Session;
 	
 	public function __construct()
 	{
@@ -27,7 +27,7 @@ class AccueilControllers extends Footer
 		
 		$this -> Slider = new \Models\Slider();
 		
-		$this -> Config = new \Models\Config();
+		$this->logo= $this->logo();
 		
 		$_SESSION['page']='site';
 		$_SESSION['class']="site";
@@ -36,14 +36,14 @@ class AccueilControllers extends Footer
 	public function display()
 	{
 	
-		
+		$config= new \Models\Config();
 		$pictures = $this -> Slider -> getSlider();
 		
-		$title = $this -> Config -> getContent("titre accueil");
+		$title = $config-> getContent("titre accueil");
 		
-		$text = $this -> Config -> getContent ("text accueil");
+		$text = $config-> getContent ("text accueil");
 		
-		$image = $this -> Config -> getContent ("imageaccueil");
+		$image = $config-> getContent ("imageaccueil");
 		
 		$template = "views/accueil.phtml";
 		include 'views/layout.phtml';

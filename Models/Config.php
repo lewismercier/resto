@@ -41,12 +41,6 @@ public function deleteConfig(array $params):string
    return $this->deleteData("DELETE FROM config WHERE id=?",$params);
 }
 
-
-public function getContent(string $params):array
-{
-    return $this->findOne("SELECT id, name, content FROM config WHERE name=?",[$params]);
-}
-
 }
 
 

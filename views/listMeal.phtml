@@ -3,8 +3,8 @@
                 
                 
         </section>
-                
-                <a href ="index.php?page=submitMeal"><i class="fas fa-plus"></i>Créer un plat</a>
+                <p>
+                <a class="btn-add" href ="index.php?page=submitMeal"><i class="fas fa-plus"></i>Créer un plat</a></p>
             
         <table>
                 <tr>
@@ -37,11 +37,11 @@
                     
                     
                     
-                    <td><a class="modify" href="index.php?page=modifyMeal&id=<?= htmlspecialchars($meal['id']) ?> "><i class="fas fa-pen-nib"></i></a></td>
+                    <td><a class="modify" href="index.php?page=modifyMeal&id=<?= htmlspecialchars($meal['id']) ?> "><i class="fas fa-pen-nib btn-modify"></i></a></td>
                     
                     <!-- lien qui appelle la page trash et qui transmet l'id du plat à supprimer  -->
                     
-                    <td><a class="delete" href="index.php?page=deleteMeal&id=<?= htmlspecialchars($meal['id']) ?>"><i class="fas fa-trash-alt"></i></a>
+                    <td><a class="confirmButton" data-url="index.php?page=deleteMeal&id=<?= htmlspecialchars($meal['id']) ?>"><i class="fas fa-trash-alt btn-error"></i></a>
                     </td>
                 </tr>
                 <?php endforeach; ?>

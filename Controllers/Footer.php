@@ -6,7 +6,7 @@ abstract class Footer
 {
     
     private $modelOpening;
-    private $Config;
+    protected $Config;
     
     public function __construct()
 	{

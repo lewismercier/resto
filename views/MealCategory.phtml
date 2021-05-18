@@ -4,8 +4,8 @@
                 
                 
         </section>
-                
-                <a href ="index.php?page=submitCategory"><i class="fas fa-plus"></i> Créer une categorie de plats</a>
+                <p>
+                <a class="btn-add" href ="index.php?page=submitCategory"><i class="fas fa-plus"></i> Créer une categorie de plats</a></p>
             
         <table>
                 <tr>
@@ -42,7 +42,7 @@
                     
                     <!-- lien qui appelle la page trash et qui transmet l'id de la categorie à supprimer  -->
                     
-                    <td><a class="confirmButton" href="index.php?page=deleteCategory&id=<?= htmlspecialchars($category['id']) ?>"><i class="fas fa-trash-alt btn-error"></i></a>
+                    <td><a class="confirmButton" data-url="index.php?page=deleteCategory&id=<?= htmlspecialchars($category['id']) ?>"><i class="fas fa-trash-alt btn-error"></i></a>
                     </td>
                 </tr>
                 <?php endforeach; ?>

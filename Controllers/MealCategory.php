@@ -31,13 +31,21 @@ class MealCategory extends Footer
   	    }
 	
 	
+	public function display()
+	{
+	// ON RECUPERE LES CATEGORIE EXISTANTE POUR LES AFFICHER
+	$mealCategory = $this->model->getAllCategory();
+	
+	$template = "MealCategory.phtml";
+	include "views/layout.phtml"; 
+	}
 	
 	public function submit()
 	{
 		//vérifier que le formulaire est complété
         if(!empty($_POST))
-		{réparer les données pour les mettre
-    } dans la base de données
+		{
+    
 			$name = $_POST['name'];
 		
 			$dish= $_POST['is_dish'];

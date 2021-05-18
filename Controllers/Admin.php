@@ -10,7 +10,7 @@ class Admin extends Footer
 	public $city;
 	public $tel;
 	public $logo;
-    
+    use Session;
     public function __construct()
 	{
 		parent::__construct();
@@ -21,14 +21,15 @@ class Admin extends Footer
 		$this->city = $this->getCity();
 		
 		$this->tel = $this -> getTel();
-		$this->setAdminPage();
+		$_SESSION['page']='admin';
 		$_SESSION['class']="adconnect";
+		$this->logo= $this->logo();
     
 	}
     
    public function Connect()
    {
-       
+     
         if(isset( $_SESSION['admin']))
         {
             header("location:index.php?page=Dashboard");

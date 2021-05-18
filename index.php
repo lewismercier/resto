@@ -7,13 +7,9 @@ spl_autoload_register(function($class){//$class = Controllers\AccueilController 
     include str_replace("\\","/",$class).".php";//$class = Controllers/AccueilController.php     /Models/Admin.php
 });
 
+include "Controllers/Session.php";
 
-<<<<<<< HEAD
 
-
-=======
-session_start();
->>>>>>> b9b8d3da4ae0867ce0a273d82702b3418c3d3fc9
 
 session_start();
 /*
@@ -38,6 +34,7 @@ else
 	//tester le param page avec le switch
 	switch ($_GET['page'])
 	{
+		//Admin
 		case'Admin':
 			$controller = new Controllers\Admin();
 			$controller -> connect();
@@ -46,9 +43,10 @@ else
 			$controller = new Controllers\Admin();
 			$controller -> deconexion();
 			break;
+		//Dashboard	
 		case'Dashboard':
-			$controller = new Controllers\Admin();
-			$controller -> Dashboard();
+			$controller = new Controllers\Dashboard();
+			$controller -> display();
 			break;
         
         //SLIDER
@@ -138,6 +136,47 @@ else
 			$controller = new Controllers\Opening_hour();
 			$controller -> submit();
 			break;
+			//MEAL 
+		case 'Meal':
+			$controller = new Controllers\Meal();
+			$controller -> display();
+			break;
+			
+		case'submitMeal':
+			$controller = new Controllers\Meal();
+			$controller -> submit();
+			break;
+			
+		case 'modifyMeal':
+			$controller = new Controllers\Meal();
+			$controller -> modify($_GET['id']);
+			break;
+			
+		case 'deleteMeal':
+			$controller = new Controllers\Meal();
+			$controller-> deleteMeal($_GET['id']);
+			break;
+			//MENUS
+			
+	    case'Menus':
+            $controller = new Controllers\Menus();
+            $controller -> display();
+            break;  
+            
+        case'Addmenus':
+            $controller = new Controllers\Menus();
+            $controller -> addMenus();
+            break;
+            
+        case'Modifmenus':
+            $controller = new Controllers\Menus();
+            $controller -> modifMenus($_GET['id']);
+            break;
+            
+        case'Suppmenus':
+            $controller = new Controllers\Menus();
+            $controller -> suppMenus($_GET['id']);
+            break;  
 		
 	}
 

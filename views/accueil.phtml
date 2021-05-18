@@ -1,6 +1,4 @@
-
-	<main class="container">
-		<div class="slider">
+	<div class="slider">
 			<div><img src="assets/img/slider-01.jpg" alt="Table seen from the top with drinks and plates with food"></div>
 			<div><img src="assets/img/slider-02.jpg" alt="Zoom on a plate seen from the top and red chilli"></div>
 			<div><img src="assets/img/slider-03.jpg" alt="Table seen from the top with drinks and plates with food"></div>
@@ -68,44 +66,4 @@
 				<a href="menus.html" class="details"><img src="assets/img/fork-knife.svg" alt="">See more</a>
 			</article>
 		</section>
-	</main>
 	
-	<footer>
-		<div class="container">
-			<div class="flex">
-				<aside>
-					<h4>Opening hours</h4>
-					<table>
-						<?php foreach($open as $items):?>
-						<tr>
-							<td><?= htmlspecialchars($items['days']);?></td>
-							<td><?= htmlspecialchars($items['hours']);?></td>
-						</tr>
-						<?php endforeach;?>
-					</table>
-				</aside>
-				<aside>
-					<h4>Contact</h4>
-					<address>
-						<p>13 Christopher Street<br>
-							New York,<br>
-							NY 10014-3543</p>
-						<p>+01 2000 800 9999</p>
-					</address>
-				</aside>
-				<aside>
-					<h4>Social networks</h4>
-					<div class="reseaux">
-						<a href="#" class="fab fa-facebook-f"></a>
-						<a href="#" class="fab fa-instagram"></a>
-						<a href="#" class="fab fa-pinterest-p"></a>
-					</div>
-				</aside>
-			</div> <!-- end of .flex -->
-			<div class="footer">
-				<p><a rel="license" href="https://3wa.fr/propriete-materiel-pedagogique/"><img alt="Propriété de la 3W Academy" src="https://3wa.fr/wp-content/themes/3wa2015/img/logos/big.png"></a></p><br>
-				<span>Cet exercice</span> de <a href="https://3wa.fr">3W Academy</a> est mis à disposition <a rel="license" href="https://3wa.fr/propriete-materiel-pedagogique/">pour l'usage personnel des étudiants. Pas de Rediffusion - Attribution - Pas d'Utilisation Commerciale - Pas de Modification - International</a>.<br>
-				Les autorisations au-delà du champ de cette licence peuvent être obtenues auprès de <a href="mailto:contact@3wa.fr" rel="cc:morePermissions">contact@3wa.fr</a>. Les maquettes ont été réalisées par <a href="https://www.cath2nos.com">Catherine Denos</a>.
-			</div> <!-- end of .footer -->
-		</div> <!-- end of .container -->
-	</footer>

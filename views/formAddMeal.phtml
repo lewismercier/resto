@@ -1,0 +1,34 @@
+<h1>Gestion des plats</h1>
+	<!-- si pas d'attribut action, par défaut, la soumission du formulaire fait un rechargement de la même page-->
+	<form method="post" enctype="multipart/form-data">
+		<p>
+			<label for='name'>Nom du plat</label>
+			<input type="text"name="name" id="name" value="<?= (isset($meal))?$meal['name']:""?>">
+			
+		</p>
+		
+		<p>
+			<label for='image'>Charger l'image</label>
+			<input type="file"name="image" id="image"> 
+			<input type="hidden" name="imgbdd" value="<?= (isset($meal))?$meal['src']:""?>">
+		</p>
+		<p>
+			<!--type text-->
+			<label for='alt'>Nom alternatif</label>
+			<input type="text" name="alt" id="alt" value="<?=(isset($meal))?$meal['alt']:""?>">
+		</p>
+		
+		<p>
+			<label for='idCategory'>Quelle est la catégorie du plat</label>
+				<select name = "idCategory" id="idCategory"> 
+				<option value="<?=(isset($meal))?$meal['id_category']:""?>"></option>
+					<?php foreach($mealCategory as $category):?>
+						<option value="<?=$category["id"]?>">
+						<?= htmlspecialchars($category['name'])?>
+						</option>
+					<?php endforeach; ?>
+				</select>
+		</p>
+		
+		<button type="submit">Insérer un nouveau plat ou modifier un plat</button>
+	</form>

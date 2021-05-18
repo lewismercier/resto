@@ -5,11 +5,26 @@ namespace Controllers;
 class Slider
 {
     
+    private $model;
+    public $open;
+    use Session;
+    public function __Construct()
+    {
+    
+    	 $this -> redirectIfNotAdmin();
+    	 $this->setAdminPage();
+        //ON INSTANCIE LE MODEL DE LA CLASSE
+    	$this->model=new \Models\Slider();
+    	// ON INSTANCIE LE MODEL DES HORAIRES
+    	
+        $this->open =  $this->openHour();
+        $_SESSION['class']="adslider";
+    }
 	public function display()
 	{
-	$model = new \Models\Slider();
-	$sliders = $model->getSlider();
 	
+	$sliders = $this-> model-> getSlider();
+	$appercu=$this->model->getSlidpub();
 	$template = "listSlider.phtml";
 	include "views/layout.phtml";
 	}
@@ -40,8 +55,10 @@ class Slider
 		
 		
 		//mettre les datas en bdd
-		$modelSlider = new \Models\Slider();
-		$modelSlider -> insertSlider([$image, $alt, $poids, $published]);
+		
+		$this->model-> insertSlider([$image, $alt, $poids, $published]);
+		header("location:index.php?page=Slider");
+	    exit;
 		}
 	
 		$template = "formAddSlider.phtml";
@@ -50,8 +67,8 @@ class Slider
 	
 	public function modify($id)
 	{
-		$model = new \Models\Slider();
-		$slider = $model->getOneSlider($id);
+		
+		$slider = $this->model->getOneSlider($id);
 		
 		if(!empty($_POST))
 		{
@@ -80,7 +97,7 @@ class Slider
 				}
 			
 	
-			$slider = $model->updateSlider([$image,$alt,$poids,$published,$id]);
+			$this->model->updateSlider([$image,$alt,$poids,$published,$id]);
 			
 			//redirection header location...
 			header("location:index.php?page=Slider");
@@ -94,10 +111,14 @@ class Slider
 	public function trash($id)
 	{
 	
-		$model = new \Models\Slider();
-		$slider = $model->deleteSlider([$id]);
+		
+		$this->model->deleteSlider([$id]);
 	
 		header("location:index.php?page=Slider");
     	exit;
+	}
+	public function setPublished($id)
+	{
+		
 	}
 }

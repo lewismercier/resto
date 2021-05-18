@@ -62,6 +62,7 @@ table {
   padding: 0.5rem;
   text-align: center;	
 }
+
 /* *****************************************************************
 GENERAL
 ***************************************************************** */
@@ -112,7 +113,114 @@ h2 {
 p {
 	margin-bottom: 1.5rem;
 }
-
+a{
+	text-decoration:none;
+}
+/* *****************************************************************
+BACK OFFICE
+***************************************************************** */
+.administration{
+	display:flex;
+	flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    background-color:rgba(255, 255, 255,0.6);
+}
+.administration div{
+	width:70%;
+}
+.administration table{
+	margin: auto;
+    width: 100%;
+    text-align: center;
+    border:0.1em solid black;
+}
+.administration tr{
+	padding:2%;
+    border:0.1em solid #f0f0f0;
+}
+.adcategorie{
+	background-image:url('.././img/fondcategorie.png');
+}
+.adslider{
+	background-image:url('.././img/fondslider.jpg');
+}
+.adconnect{
+	background-image:url('.././img/fondconnect.jpg');
+}
+.adash{
+	background-image:url('.././img/fond admin.jpg');
+}
+.adconfig{
+	background-image:url('.././img/fond admin.jpg');
+}
+.admenu{
+	background-image:url('.././img/fondmenu1.jpg');
+}
+.admeal{
+	background-image:url('.././img/fondplat.jpeg');
+}
+.adhour{
+	background-image:url('.././img/fondhour.jpg');
+}
+.leftmenu {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	display:flex;
+	flex-direction:column;
+	
+}
+.leftmenu li{
+	
+	flex-grow:1;
+}
+.leftmenu a{
+	display:block;
+	padding:1em;
+	background-color:#ebe3db;
+	text-align: center;
+	margin-bottom:0.2em;
+	color:#00000;
+	width:10em;
+}
+.leftmenu a:hover{
+	background-color:#12c8ff;
+}
+.hide{
+	display:none;
+}
+.btn{
+	width:4em;
+	margin:auto;
+	padding:0;
+	color:white;
+	/*border-radius:2em;*/
+}
+.btn-success{
+	color:#4ead44;
+}
+.btn-error{
+	color:#d11002;
+	
+}
+.btn-next{
+	text-align:right;
+	list-style:none;
+}
+.btn-prev{
+	text-align:left;
+	list-style:none;
+}
+.btn-modify{
+	color:#0a74ff;
+}
+.bg-ok{
+	background-color:#539945;
+}
+.bg-grey{
+	background-color:#e1e2e3;	
+}
 /* *****************************************************************
 HEADER
 ***************************************************************** */
@@ -742,38 +850,4 @@ VERSION DESKTOP
 	form, video {
 		width: 70%;
 	}
-}
-/* *****************************************************************
-BACK OFFICE
-***************************************************************** */
-.administration, .leftmenu{
-	display:flex;
-}
-.administration{
-	
-	flex-direction: row;
-    align-items: flex-start;
-}
-.leftmenu {
-	list-style-type:none;
-	margin:0;
-	padding:0;
-	flex-direction:column;
-	
-}
-.leftmenu li{
-	
-	flex-grow:1;
-}
-.leftmenu a{
-	display:block;
-	padding:1em;
-	background-color:#ebe3db;
-	text-align: center;
-	margin-bottom:0.2em;
-	color:#00000;
-	width:10em;
-}
-.leftmenu a:hover{
-	background-color:#12c8ff;
 }

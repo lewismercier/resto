@@ -4,10 +4,21 @@ namespace Controllers;
 
 class MealCategory
 {
+	private $model;
+    public $open;
+    use Session;
+    public function __Construct()
+    {
+    	$this -> redirectIfNotAdmin();
+  		$this->setAdminPage();
+  		$this->open =  $this -> openHour(); 
+    	$this->model=new \Models\MealCategory();
+    	$_SESSION['class']="adcategorie";
+    }
     public function display()
 	{
-	$model = new \Models\MealCategory();
-	$mealCategory = $model->getAllCategory();
+	// ON RECUPERE LES CATEGORIE EXISTANTE POUR LES AFFICHER
+	$mealCategory = $this->model->getAllCategory();
 	
 	$template = "MealCategory.phtml";
 	include "views/layout.phtml"; 
@@ -29,8 +40,10 @@ class MealCategory
 		
 		
 		//mettre les datas en bdd
-		$modelMealCategory = new \Models\MealCategory();
-		$modelMealCategory -> insertMealCategory([$name, $dish, $description]);
+		
+			$this->model -> insertMealCategory([$name, $dish, $description]);
+			header("location:index.php?page=MealCategory");
+	    	exit;
 		}
 	
 		$template = "formAddCategory.phtml";
@@ -39,8 +52,8 @@ class MealCategory
 	
 	public function modify($id)
 	{
-		$model = new \Models\MealCategory();
-		$mealCategory = $model->getOneCategory($id);
+		// RECUPPERATION DE LA CATEGORIE A MODIFIER
+		$mealCategory = $this->model->getOneCategory($id);
 		
 		if(!empty($_POST))
 		{
@@ -51,7 +64,7 @@ class MealCategory
 				
 			$description=$_POST['description'];
 			
-		$model->updateMealCategory([$name,$dish,$description,$id]);
+		$this->model->updateMealCategory([$name,$dish,$description,$id]);
 			
 			//redirection header location...
 			header("location:index.php?page=MealCategory");
@@ -64,8 +77,8 @@ class MealCategory
 	public function trash($id)
 	{
 	
-		$model = new \Models\MealCategory();
-		$slider = $model->deleteMealCategory([$id]);
+	
+		$slider = $this->model->deleteMealCategory([$id]);
 	
 		header("location:index.php?page=MealCategory");
     	exit;

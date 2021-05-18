@@ -1,46 +1,45 @@
 
-        <section>
-                <h1>Meal Category Management</h1>
-                
-                <button>SQLinsert into</button>
-                <button>SQL update</button>
-                <button>SQL delete</button>
-                <button>Number of lines touched by SQL request</button>
-        </section>
+        
+                <h2>Meal Category Management</h2>
                 
                 <a href ="index.php?page=submitCategory"><i class="fas fa-plus"></i> Create a meal category</a>
             
         <table>
                 <tr>
-                    <td>id</td>
-                    <td>name</td>
-                    <td>is_dish</td>
-                    <td>description</td>
-                    <td>Modify</td>
-                    <td>Delete</td>
+                    <th class="hide">id</th>
+                    <th>Nom</th>
+                    <th>Ajouter au menu</th>
+                    <th>Description</th>
+                    <th>Modifier</th>
+                    <th>Suppri-mer</th>
                 </tr>
                 <!--Tu as besoin juste d'un seul foreach et c'est bon-->
                 <?php foreach($mealCategory as $category):?>
-                <tr>
-                    <td>
+                <tr class="<?=(htmlspecialchars($category['is_dish'])==1)?'bg-ok':'bg-grey' ?>">
+                    <td class="hide">
                     <?= htmlspecialchars($category['id'])?> 
                     </td>
                     <td>
                     <?= htmlspecialchars($category['name'])?> 
                     </td>
                     <td>
-                    <?= htmlspecialchars($category['is_dish'])?> 
+                    <?php if(htmlspecialchars($category['is_dish'])==1):?> 
+                     <button class="btn btn-error">Non</button>
+                    <?php else : ?>
+                    <button class="btn btn-success">Oui</button>
+                    
+                    <?php endif ?>
                     </td>
                     <td>
                     <?= htmlspecialchars($category['description'])?> 
                     </td>
                     
                     
-                    <td><a class="modify" href="index.php?page=modifyCategory&id=<?= htmlspecialchars($category['id']) ?> "><i class="fas fa-pen-nib"></i></a></td>
+                    <td><a href="index.php?page=modifyCategory&id=<?= htmlspecialchars($category['id']) ?> "><i class="fas fa-pen-nib btn-modify"></i></a></td>
                     
                     <!-- lien qui appelle la page trash et qui transmet l'id de la categorie à supprimer  -->
                     
-                    <td><a class="trash" href="index.php?page=deleteCategory&id=<?= htmlspecialchars($category['id']) ?>"><i class="fas fa-trash-alt"></i></a>
+                    <td><a class="confirmButton" href="index.php?page=deleteCategory&id=<?= htmlspecialchars($category['id']) ?>"><i class="fas fa-trash-alt btn-error"></i></a>
                     </td>
                 </tr>
                 <?php endforeach; ?>

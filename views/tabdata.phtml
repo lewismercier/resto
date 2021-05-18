@@ -2,11 +2,11 @@
 
     <h1>TABLEAU HEURES JOURS</h1>
     
-    <a href="index.php?page=ajouterOpening">Ajouter un horaire</a>
+    <a href="index.php?page=ajouterOpening"><i class="fas fa-plus"></i>Ajouter un horaire</a>
 				
     <table>
         <tr>
-            <th> Id </th>
+            <th class="hide"> Id </th>
             <th> Day </th>
             <th> Hour </th>
             <th> Modifier </th>
@@ -17,14 +17,14 @@
         
         <?php foreach($open as $items):?>
         
-        <tr>
-            <td><?= htmlspecialchars($items['id']);?></td>
+        <tr class="bg-grey">
+            <td class="hide"><?= htmlspecialchars($items['id']);?></td>
             <td><?= htmlspecialchars($items['days']);?></td>
             <td><?= htmlspecialchars($items['hours']);?></td>
            
            <!-- ds page j envoi modifOpening et id de la ligne ($items['id']) -->
-            <td><a href="index.php?page=modifOpening&id=<?= $items['id'] ?>"><i class="fas fa-pen-nib"></i></a></td>
-            <td><a href="index.php?page=deleteOpening&id=<?= $items['id'] ?>"><i class="fas fa-trash-alt"></i></a></td>
+            <td><a href="index.php?page=modifOpening&id=<?= $items['id'] ?>"><i class="fas fa-pen-nib btn-modify"></i></a></td>
+            <td><a class="confirmButton" data-url="index.php?page=deleteOpening&id=<?= $items['id'] ?>"><i class="fas fa-trash-alt btn-error"></i></a></td>
         </tr>
         
          <?php endforeach;?>

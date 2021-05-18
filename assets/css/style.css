@@ -149,7 +149,7 @@ BACK OFFICE
 	background-image:url('.././img/fondconnect.jpg');
 }
 .adash{
-	background-image:url('.././img/fond admin.jpg');
+	background-image:url('.././img/fondrestau2.jpg');
 }
 .adconfig{
 	background-image:url('.././img/fond admin.jpg');
@@ -216,10 +216,13 @@ BACK OFFICE
 	color:#0a74ff;
 }
 .bg-ok{
-	background-color:#539945;
+	background-color:#9edb8f;
 }
 .bg-grey{
 	background-color:#e1e2e3;	
+}
+.bg-standar{
+	background-color:#ebe3db;
 }
 /* *****************************************************************
 HEADER

@@ -12,7 +12,7 @@
   
  
   <a href="index.php?page=Addmenus">AJOUTER UN MENU</a>
-  <table class="table"> <!--tableau menu-->
+  <table> <!--tableau menu-->
  <tr class="tr">
    <th>titre</th>
    <th>image</th>
@@ -28,7 +28,7 @@
  
     	<?php foreach($menus as $menu): ?>
 		
-		 <tr>
+		 <tr class="bg-standar">
 		   
 	    
 	     <td><?= htmlspecialchars($menu['title']) ?></td>

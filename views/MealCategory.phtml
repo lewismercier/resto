@@ -15,7 +15,7 @@
                 </tr>
                 <!--Tu as besoin juste d'un seul foreach et c'est bon-->
                 <?php foreach($mealCategory as $category):?>
-                <tr class="<?=(htmlspecialchars($category['is_dish'])==1)?'bg-ok':'bg-grey' ?>">
+                <tr class="<?=(htmlspecialchars($category['is_dish'])==1)?'bg-ok':'bg-standar' ?>">
                     <td class="hide">
                     <?= htmlspecialchars($category['id'])?> 
                     </td>

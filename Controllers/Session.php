@@ -12,4 +12,21 @@ trait Session
 			exit;
 		}
 	}
+	 public function setAdminPage()
+    {
+        if(isset($_SESSION['admin']))
+        {
+            $_SESSION['page']='admin';
+        }
+    }
+    public function openHour()
+    {
+        $modelopen= new \Models\Opening_hour();
+        return $modelopen -> getOpen(); 
+    }
+    public function logo()
+    { 
+     $modelcongig= new \Models\Config();
+     return $modelcongig->getContent("logo");
+    }
 }

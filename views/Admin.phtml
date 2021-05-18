@@ -1,5 +1,11 @@
 <main>
-	
+	<div class="container">
+			<p class="logo">
+				<img src="<?=$this->logo['content'] ?>" alt="Logo for Freshly Restaurant">
+				<strong>Freshly Restaurant</strong>
+		
+			</p>
+		</div>
 	<form method="post">
 		<p>
 			<label for='login'>login</label>
@@ -9,9 +15,8 @@
 			<label for='password'>password</label>
 			<input type="password" name="password" id="password">
 		</p>
-		<p><?=(isset($message))?$message:""?></p>
-		
-		<button>Se connecter</button>
+		<input type="submit" name="Ajouter" value="Se connecter"/>
+		<!--<button>Se connecter</button>-->
 		
 	</form>
 </main>

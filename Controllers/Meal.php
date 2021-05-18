@@ -8,6 +8,7 @@ class Meal extends Footer
 	public $contact;
 	public $city;
 	public $tel;
+	private $model;
 	
 	use Session;
   
@@ -25,21 +26,21 @@ class Meal extends Footer
 		
   		$this -> redirectIfNotAdmin();
   		$_SESSION['page']='admin';
-  		
+  		$this->model = new \Models\Meal();
+  		 $_SESSION['class']="admeal";
   	    }
 		public function display()
 		{
-		$model = new \Models\Meal();
-		$meals = $model->getAllMeal();
+		$meals = $this->model->getAllMeal();
 		
 		$template = "listMeal.phtml";
 		include "views/layout.phtml";
 		}
-	public function submit()
-	{
+		public function submit()
+		{
 		//appeler la méthode qui va chercher les différentes catégories
-		$model = new \Models\MealCategory();
-		$mealCategory = $model->getAllCategory();
+		$modelcat = new \Models\MealCategory();
+		$mealCategory = $modelcat->getAllCategory();
 
 		//vérifier que le formulaire est complété
         if(!empty($_POST))
@@ -54,18 +55,18 @@ class Meal extends Footer
 		 $alt = $_POST['alt']; 
 		 $idCategory = $_POST['idCategory'];
 		 
-		 $modelMeal = new \Models\Meal();
-		 $modelMeal -> insertMeal([$name, $image, $alt, $idCategory]);
+		 
+		 $this->model -> insertMeal([$name, $image, $alt, $idCategory]);
 		}
 	    
 	    $template = "formAddMeal.phtml";
 		include "views/layout.phtml";
-	 }
+		}
 	  
-	 public function modify($id)
-	{
-		$model = new \Models\Meal();
-		$meal = $model->getOneMeal($id);
+		public function modify($id)
+		{
+		
+		$meal = $this->model->getOneMeal($id);
 		
 		if(!empty($_POST))
 		{
@@ -86,7 +87,7 @@ class Meal extends Footer
 			$alt = $_POST['alt'];
 			$idCategory = $_POST['idCategory'];
 	
-			$meal = $model->updateMeal([$name,$image,$alt,$idCategory,$id]);
+			 $this->model->updateMeal([$name,$image,$alt,$idCategory,$id]);
 			
 			//redirection header location...
 			header("location:index.php?page=Meal");
@@ -96,16 +97,16 @@ class Meal extends Footer
 		$mealCategory = $modelCategory->getAllCategory();
 		$template = "formAddMeal.phtml";
 		include "views/layout.phtml";
-	} 
-	public function deleteMeal($id)
-	{
+		} 
+		public function deleteMeal($id)
+		{
 	
-		$model = new \Models\Meal();
-		$meal = $model->deleteMeal([$id]);
+		
+		$meal = $this->model->deleteMeal([$id]);
 	
 		header("location:index.php?page=Meal");
     	exit;
-	}    
+		}    
 	
 	
 	

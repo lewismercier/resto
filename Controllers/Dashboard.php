@@ -10,6 +10,7 @@ class Dashboard extends Footer
 	public $contact;
 	public $city;
 	public $tel;
+	private $model;
   
     use Session;
   
@@ -26,11 +27,14 @@ class Dashboard extends Footer
 		      $this->tel = $this -> getTel();
   	      
     		  $this -> redirectIfNotAdmin();
-    		  $_SESSION['page']='admin';
+    		  $this->setAdminPage();
+    		  $_SESSION['class']="adash";
   	    }
+    
     public function display()
     {
-        
+        $template = "views/Dashboard.phtml";
+		include 'views/layout.phtml';
     }
     
 }

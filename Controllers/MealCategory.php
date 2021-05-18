@@ -8,7 +8,7 @@ class MealCategory extends Footer
 	public $contact;
 	public $city;
 	public $tel;
-	
+	private $model;
 	use Session;
   
   
@@ -24,24 +24,20 @@ class MealCategory extends Footer
 		$this->tel = $this -> getTel();	
   	    	
 		$this -> redirectIfNotAdmin();
-  		$_SESSION['page']='admin';
+  		$this->setAdminPage();
+  		$this->model=new \Models\MealCategory();
+  		
+  		$_SESSION['class']="adcategorie";
   	    }
-    public function display()
-	{
-	$model = new \Models\MealCategory();
-	$mealCategory = $model->getAllCategory();
 	
-	$template = "MealCategory.phtml";
-	include "views/layout.phtml"; 
-	}
 	
 	
 	public function submit()
 	{
 		//vérifier que le formulaire est complété
         if(!empty($_POST))
-		{
-		//préparer les données pour les mettre dans la base de données
+		{réparer les données pour les mettre
+    } dans la base de données
 			$name = $_POST['name'];
 		
 			$dish= $_POST['is_dish'];
@@ -51,8 +47,10 @@ class MealCategory extends Footer
 		
 		
 		//mettre les datas en bdd
-		$modelMealCategory = new \Models\MealCategory();
-		$modelMealCategory -> insertMealCategory([$name, $dish, $description]);
+		
+			$this->model -> insertMealCategory([$name, $dish, $description]);
+			header("location:index.php?page=MealCategory");
+	    	exit;
 		}
 	
 		$template = "formAddCategory.phtml";
@@ -61,8 +59,8 @@ class MealCategory extends Footer
 	
 	public function modify($id)
 	{
-		$model = new \Models\MealCategory();
-		$mealCategory = $model->getOneCategory($id);
+		// RECUPPERATION DE LA CATEGORIE A MODIFIER
+		$mealCategory = $this->model->getOneCategory($id);
 		
 		if(!empty($_POST))
 		{
@@ -73,7 +71,7 @@ class MealCategory extends Footer
 				
 			$description=$_POST['description'];
 			
-		$model->updateMealCategory([$name,$dish,$description,$id]);
+		$this->model->updateMealCategory([$name,$dish,$description,$id]);
 			
 			//redirection header location...
 			header("location:index.php?page=MealCategory");
@@ -86,8 +84,8 @@ class MealCategory extends Footer
 	public function trash($id)
 	{
 	
-		$model = new \Models\MealCategory();
-		$slider = $model->deleteMealCategory([$id]);
+	
+		$slider = $this->model->deleteMealCategory([$id]);
 	
 		header("location:index.php?page=MealCategory");
     	exit;

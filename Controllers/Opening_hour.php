@@ -8,8 +8,8 @@ class Opening_hour extends Footer
 	public $contact;
 	public $city;
 	public $tel;
+	private $model;
 	
-	private $modelOpening;
 	
 	use Session;
   
@@ -25,21 +25,19 @@ class Opening_hour extends Footer
 			
 			$this->tel = $this -> getTel();	
   	    	
-  		  $this -> redirectIfNotAdmin();
-  		  $_SESSION['page']='admin';
-  		  $this -> modelOpening = new \Models\Opening_hour();
+  			$this -> redirectIfNotAdmin();
+  			$this->setAdminPage();
+  			 $this->model=new \Models\Opening_hour();
+  			 $_SESSION['class']="adhour";
   		
   	    }
-	//Declarer une variable privée pour contenir les modèles à instancier
-	
-	
 	public function display()
 
 	{
 		//tu dois allé chercher les informations dans la base de données
 		//appeler la vue pour afficher les datas ds le tableau
 		// Appel ma function getOpen contenu ds la variable modelOpening
-		$open = $this -> modelOpening -> getOpen();
+		$open = $this -> model -> getOpen();
 		
 		$template = "views/tabdata.phtml";
 		include 'views/layout.phtml';	
@@ -52,7 +50,7 @@ class Opening_hour extends Footer
 	// je recupère id passer par l index
 	public function modif($id)
 	{
-		$recupOpening = $this -> modelOpening -> getopenbuyid($id);
+		$recupOpening = $this -> model -> getopenbuyid($id);
 		
 		
 		if(!empty($_POST))
@@ -62,7 +60,7 @@ class Opening_hour extends Footer
 			$day = $_POST['day']; // name"day" du form
 			$hour = $_POST['hour']; // name"hour" du from
 			
-			$this -> modelOpening -> getupdate([$day, $hour,$id]);	
+			$this -> model -> getupdate([$day, $hour,$id]);	
 			header('location: index.php?page=opening_hour');
 			exit;
 		}
@@ -88,7 +86,7 @@ class Opening_hour extends Footer
 			//préparer les données pour les mettre dans la base de données
 			$day = $_POST['day']; // name"day" du form
 			$hour = $_POST['hour']; // name"hour" du from
-			$this -> modelOpening -> getinsert([$day, $hour]);
+			$this -> model -> getinsert([$day, $hour]);
 			
 			header('location: index.php?page=opening_hour');
 			exit;
@@ -104,7 +102,7 @@ class Opening_hour extends Footer
 	public function deleteOpening($id)
 	{
 		// mettre les datas en bdd
-		$this -> modelOpening -> getdelete([$id]);
+		$this -> model -> getdelete([$id]);
 	
 		header('location: index.php?page=opening_hour');
 		exit;

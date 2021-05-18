@@ -11,6 +11,7 @@ class AccueilControllers extends Footer
 	public $tel;
 	private $Slider;
 	private $Config;
+	public $logo;
 	
 	
 	public function __construct()
@@ -29,9 +30,8 @@ class AccueilControllers extends Footer
 		$this -> Config = new \Models\Config();
 		
 		$_SESSION['page']='site';
-		
-	}
-	
+		$_SESSION['class']="site";
+	}	
 	
 	public function display()
 	{

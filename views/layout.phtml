@@ -21,21 +21,21 @@
 <header>
 	
 	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-			
-			<p><a href="index.php?page=Admin"><i class="fas fa-pen-nib"></i>Administration</a><p>
-		
-			<?php if(isset($_SESSION['admin'])): ?>
-			<a href="index.php?page=deco"><i class="fas fa-sign-out-alt"></i>Deconnexion</a></p>
-			<?php endif; ?>
-			
-	</div>		
+    		<ul>
+			<li><a href="index.php" class="active">Home</a></li>
+			<li><a href="about.html">About</a></li>
+			<li><a href="menus.html">Menus</a></li>
+			<li><a href="contact.html">Contact</a></li>
+			<li><a href="index.php?page=Admin">Espace Membre</a></li>
+		</ul>
 	</nav>
 	<?php if(isset($_SESSION['admin'])):?>
 	<nav>
 		<ul>
+			<li></li><a href="index.php?page=deco"><i class="fas fa-sign-out-alt"></i>Deconnexion</a></li>
 			<li><a href="index.php?page=MealCategory">Gestions des catégories de plats</a></li>
 			<li>Gestions des plats</li>
+			<li>Gestions des menus</li>
 			<li><a href="index.php?page=Slider">Gestion du slider</a></li>
 			
 			
@@ -47,7 +47,7 @@
 		</ul>
 	</nav>
 	<?php endif; ?>
-<header>
+</header>
 
     	    
 <!-- code principal de la page -->

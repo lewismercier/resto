@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Controllers;
 
 class Admin 
@@ -11,30 +10,60 @@ class Admin
        if (!empty($_POST["login"]))
        {
            //instanciation du modèle Admin dans la variable $modelAdmin
-           $modelAdmin=new \Models\Admin();
+           $modelAdmin = new \Models\Admin();
+           $Admin = $modelAdmin -> getAdmin($_POST["login"]);
            
-           $Admin=$modelAdmin->getAdmin($_POST["login"]);
+            $modelUsers = new \Models\EspaceM();
+            $email = $modelUsers -> selectUsers($_POST["login"]);
+           
+           //var_dump($Admin);
+           
+                  
            
                 if ($Admin) 
                 {   
-                    //vérifie le champ du form et le password dans bdd
-                   if (password_verify($_POST["password"],$Admin["password"])==true)
-                   {
-                       //affectation le login à la session admin
-                       
-                       $_SESSION['admin']=$Admin["login"];
-                       header("location:index.php?page=Dashboard");
-                       exit;
+                           if (password_verify($_POST["password"],$Admin["password"])==true)
+                         {
+                             //affectation le login à la session admin
+                             
+                             $_SESSION['admin']= $Admin["login"];
+                             header("location:index.php?page=Dashboard");
+                             exit;
+                         }
+                         else
+                          {
+                              $message="mot de passe incorrect";
+                          }
+                    
                    }
                    else
-                    {
-                        $message="mot de passe incorrect";
-                    }
-       }
-       else
-       {
-            $message="login incorrect"; 
-       }
+                   {
+                         
+                        
+                         
+                         
+                         if($email)
+                         {
+                               
+                               
+                             if (password_verify($_POST["password"],$email["password"])==true)
+                               {  
+                                     var_dump($email);
+                                     
+                                     
+                                    $_SESSION['users']= $email["login"];
+                                    header("location:index.php?page=DashboardUsers");
+                                    exit;
+                              }
+                               
+                         }
+                         else
+                         {
+                              $message="login incorrect";  
+                               
+                         }
+                               
+                  }
         
     }    
        

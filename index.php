@@ -136,6 +136,18 @@ else
 			$controller = new Controllers\Opening_hour();
 			$controller -> submit();
 			break;
+		case'espaceM':
+			$controller = new Controllers\EspaceM();
+			$controller -> Connect();
+			break;
+		case'DashboardUsers':
+			$controller = new Controllers\DashboardUsers();
+			$controller -> display();
+			break;
+		case'reservation':
+			$controller = new Controllers\Reservation();
+			$controller -> display();
+			break;
 		
 	}
 

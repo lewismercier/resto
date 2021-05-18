@@ -1,5 +1,7 @@
 <?php
 
+// affichage des horaires sur l'index
+
 namespace Controllers;
 
 class AccueilControllers
@@ -16,16 +18,11 @@ class AccueilControllers
 	public function display()
 	{
 	
-		
 		$open = $this -> modelOpening -> getOpen(); 
 		
 		$template = "views/accueil.phtml";
-		
-		
 
 		include 'views/layout.phtml';
-
-
 
 	}
 }

@@ -1,10 +1,32 @@
 <?php
              //CONTROLLERS
-namespace controllers;
+namespace Controllers;
 
 
-class Config
+class Config extends Footer
 {
+  public $open;
+	public $contact;
+	public $city;
+	public $tel;
+  
+  
+  use Session;
+
+      public function __construct()
+  	    {
+  	      parent::__construct();
+		      $this-> open = $this-> getHour();
+		
+		      $this->contact = $this->getContact();
+		
+		      $this->city = $this->getCity();
+		
+		      $this->tel = $this -> getTel();
+  	      
+    		  $this -> redirectIfNotAdmin();
+    		  $_SESSION['page']='admin';
+	      }
   public function display()
   {
   
@@ -78,7 +100,7 @@ include 'views/layout.phtml';
       
       	
 	      //appelé la fonction insertion
-	   $model -> updateConfig([$_POST['nom'], $_POST['contenu'],$id]);
+	   $model -> updateConfig([$_POST['contenu'],$id]);
 	   
 	    	header('location:index.php?page=Config'); 
       	exit;                         

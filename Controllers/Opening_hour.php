@@ -2,26 +2,36 @@
 
 namespace Controllers;
 
-class Opening_hour
+class Opening_hour extends Footer
 {
-	//Declarer une variable privée pour contenir les modèles à instancier
+	public $open;
+	public $contact;
+	public $city;
+	public $tel;
+	
 	private $modelOpening;
 	
+	use Session;
+  
+  
+      public function __construct()
+  	    {
+	  	    parent::__construct();
+			$this-> open = $this-> getHour();
+			
+			$this->contact = $this->getContact();
+			
+			$this->city = $this->getCity();
+			
+			$this->tel = $this -> getTel();	
+  	    	
+  		  $this -> redirectIfNotAdmin();
+  		  $_SESSION['page']='admin';
+  		  $this -> modelOpening = new \Models\Opening_hour();
+  		
+  	    }
+	//Declarer une variable privée pour contenir les modèles à instancier
 	
-	//mon constructeur qui se lance automatiquement 
-	public function __construct()
-	{
-		// Je vais chercher tout mes fonctions du model pour modelOpening
-		$this -> modelOpening = new \Models\Opening_hour();
-		
-		// //si le formulaire a été soumis
-		// if(!empty($_POST))
-		// {
-		// 	// j'appel ma function
-		// 	$this -> display();
-		
-		// }
-	}
 	
 	public function display()
 

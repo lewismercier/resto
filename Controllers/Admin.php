@@ -3,8 +3,25 @@
 
 namespace Controllers;
 
-class Admin 
+class Admin extends Footer 
 {
+    public $open;
+	public $contact;
+	public $city;
+	public $tel;
+    
+    public function __construct()
+	{
+		parent::__construct();
+		$this-> open = $this-> getHour();
+		
+		$this->contact = $this->getContact();
+		
+		$this->city = $this->getCity();
+		
+		$this->tel = $this -> getTel();
+    
+	}
    public function Connect()
    {
        
@@ -23,6 +40,8 @@ class Admin
                        //affectation le login à la session admin
                        
                        $_SESSION['admin']=$Admin["login"];
+                       $_SESSION['page']="admin";
+                       
                        header("location:index.php?page=Dashboard");
                        exit;
                    }
@@ -46,14 +65,14 @@ class Admin
     public function deconexion()
     {
         session_destroy();
-         header("location:index.php?page=Admin");
+         header("location:index.php");
          exit;
     }
     public function Dashboard()
     {
         
        
-        //Appel de notre Template dashbord
+        //Appel de notre Template dashboard
     $template='Dashboard.phtml';
     include 'views/layout.phtml';
     }

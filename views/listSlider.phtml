@@ -1,24 +1,21 @@
     
         <section>
-                <h1>Slider Management</h1>
+                <h1>Gestion des sliders</h1>
                 
-                <button>SQLinsert into</button>
-                <button>SQL update</button>
-                <button>SQL delete</button>
-                <button>Number of lines touched by SQL request</button>
+                
         </section>
                 
-                <a href ="index.php?page=submit"><i class="fas fa-plus"></i> Create a slider</a>
+                <a href ="index.php?page=submit"><i class="fas fa-plus"></i> Créer un slider</a>
             
         <table>
                 <tr>
                     <td>id</td>
-                    <td>src</td>
-                    <td>alt</td>
-                    <td>published</td>
-                    <td>order</td>
-                    <td>Modify</td>
-                    <td>Delete</td>
+                    <td>Photos</td>
+                    <td>titre alternatif</td>
+                    <td>A publier</td>
+                    <td>ordre</td>
+                    <td>Modifier</td>
+                    <td>Supprimer</td>
                 </tr>
                 <!--Tu as besoin juste d'un seul foreach et c'est bon-->
                 <?php foreach($sliders as $slider):?>
@@ -52,4 +49,4 @@
                
         </table>
              
-        <p>Slider list classified by reverse chronological order ( <?=count($sliders)?>  in total)</p>
+        

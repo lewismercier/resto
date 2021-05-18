@@ -2,9 +2,30 @@
 
 namespace Controllers;
 
-class Slider
+class Slider extends Footer
 {
-    
+	public $open;
+	public $contact;
+	public $city;
+	public $tel;
+	
+	use Session;
+  
+      public function __construct()
+  	    {
+  	    	
+	  	    parent::__construct();
+			$this-> open = $this-> getHour();
+			
+			$this->contact = $this->getContact();
+			
+			$this->city = $this->getCity();
+			
+			$this->tel = $this -> getTel();
+			
+	  		$this -> redirectIfNotAdmin();
+	  		$_SESSION['page']='admin';
+  	    } 
 	public function display()
 	{
 	$model = new \Models\Slider();
@@ -41,7 +62,7 @@ class Slider
 		
 		//mettre les datas en bdd
 		$modelSlider = new \Models\Slider();
-		$modelSlider -> insertSlider([$image, $alt, $poids, $published]);
+		$modelSlider -> insertMeal([$image, $alt, $poids, $published]);
 		}
 	
 		$template = "formAddSlider.phtml";

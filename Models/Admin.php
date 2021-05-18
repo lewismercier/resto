@@ -5,7 +5,7 @@ namespace Models;
 
 class Admin extends Databases
 {
-	public function getAdmin (string $login):array
+	public function getAdmin (string $login)
 	{
 		
 		return $this->findOne("SELECT login, password FROM admin WHERE login=?", [$login]);

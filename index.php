@@ -7,7 +7,7 @@ spl_autoload_register(function($class){//$class = Controllers\AccueilController 
     include str_replace("\\","/",$class).".php";//$class = Controllers/AccueilController.php     /Models/Admin.php
 });
 
-
+include "Controllers/Session.php";
 session_start();
 
 /*
@@ -136,7 +136,47 @@ else
 			$controller = new Controllers\Opening_hour();
 			$controller -> submit();
 			break;
+			
+		//MEAL 
+		case 'Meal':
+			$controller = new Controllers\Meal();
+			$controller -> display();
+			break;
+			
+		case'submitMeal':
+			$controller = new Controllers\Meal();
+			$controller -> submit();
+			break;
+			
+		case 'modifyMeal':
+			$controller = new Controllers\Meal();
+			$controller -> modify($_GET['id']);
+			break;
+			
+		case 'deleteMeal':
+			$controller = new Controllers\Meal();
+			$controller-> deleteMeal($_GET['id']);
+			break;
+			
+		//about 
 		
+		case 'about':
+			$controller = new Controllers\AccueilControllers();
+			$controller -> about();
+			break;
+	
+		//menus
+		
+		case 'menus':
+			$controller = new Controllers\AccueilControllers();
+			$controller -> menus();
+			break;
+			
+		//contact
+		
+		case 'contact': 
+			$controller = new Controllers\AccueilControllers();
+			$controller -> contact();
+			break;
 	}
-
 }

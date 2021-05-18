@@ -36,7 +36,7 @@ abstract class Databases
 	
 	
 	
-	public function findOne(string $req,array $params = []):array
+	public function findOne(string $req,array $params = [])
 	{
 		$query = $this -> bdd -> prepare($req);
 		

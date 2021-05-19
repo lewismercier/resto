@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Controllers;
 
 class Admin extends Footer 
@@ -29,41 +28,64 @@ class Admin extends Footer
     
    public function Connect()
    {
-     
-        if(isset( $_SESSION['admin']))
-        {
-            header("location:index.php?page=Dashboard");
-        }
-        else
-        {
-            if (!empty($_POST["login"]))
-            {
-                //instanciation du modèle Admin dans la variable $modelAdmin
-                $modelAdmin=new \Models\Admin();
+       
+       if (!empty($_POST["login"]))
+       {
+           //instanciation du modèle Admin dans la variable $modelAdmin
+           $modelAdmin = new \Models\Admin();
+           $Admin = $modelAdmin -> getAdmin($_POST["login"]);
            
-                $Admin=$modelAdmin->getAdmin($_POST["login"]);
+            $modelUsers = new \Models\EspaceM();
+            $email = $modelUsers -> selectUsers($_POST["login"]);
            
-                    if ($Admin) 
-                    {   
-                        //vérifie le champ du form et le password dans bdd
-                        if (password_verify($_POST["password"],$Admin["password"])==true)
-                        {
-                            //affectation le login à la session admin
-                       
-                            $_SESSION['admin']=$Admin["login"];
-                            $_SESSION['page']='admin';
-                            header("location:index.php?page=Dashboard");
-                            exit;
-                        }
-                        else
-                        {
-                            $message="mot de passe incorrect";
-                        }
-                    }
-                    else
-                    {
-                        $message="login incorrect"; 
-                    }
+           //var_dump($Admin);
+           
+                  
+           
+                if ($Admin) 
+                {   
+                           if (password_verify($_POST["password"],$Admin["password"])==true)
+                         {
+                             //affectation le login à la session admin
+                             
+                             $_SESSION['admin']= $Admin["login"];
+                             header("location:index.php?page=Dashboard");
+                             exit;
+                         }
+                         else
+                          {
+                              $message="mot de passe incorrect";
+                          }
+                    
+                   }
+                   else
+                   {
+                         
+                        
+                         
+                         
+                         if($email)
+                         {
+                               
+                               
+                             if (password_verify($_POST["password"],$email["password"])==true)
+                               {  
+                                     var_dump($email);
+                                     
+                                     
+                                    $_SESSION['users']= $email["login"];
+                                    header("location:index.php?page=DashboardUsers");
+                                    exit;
+                              }
+                               
+                         }
+                         else
+                         {
+                              $message="login incorrect";  
+                               
+                         }
+                               
+                  }
         
             }       
        

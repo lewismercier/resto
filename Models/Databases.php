@@ -57,7 +57,9 @@ abstract class Databases
 	// recois la requete et envoi les params pour la requete
 	public function insertData(string $req, array $params=[]):string
 	{
-		$query=$this->bdd->prepare($req);
+		$query = $this -> bdd->prepare($req);
+		
+		
 	        
 		try{
 		
@@ -76,7 +78,6 @@ abstract class Databases
 			return $e->getMessage();
 		}  
 	}
-    
     
     
 	public function updateData(string $req, array $params=[]):string

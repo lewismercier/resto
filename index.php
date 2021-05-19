@@ -134,6 +134,7 @@ else
 			$controller = new Controllers\Opening_hour();
 			$controller -> submit();
 			break;
+
 			
 		//MEAL 
 		case 'Meal':
@@ -178,6 +179,20 @@ else
             break;  
 			
 		//about 
+
+		case'espaceM':
+			$controller = new Controllers\EspaceM();
+			$controller -> Connect();
+			break;
+		case'DashboardUsers':
+			$controller = new Controllers\DashboardUsers();
+			$controller -> display();
+			break;
+		case'reservation':
+			$controller = new Controllers\Reservation();
+			$controller -> display();
+			break;
+
 		
 		case 'about':
 			$controller = new Controllers\AccueilControllers();

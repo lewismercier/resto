@@ -1,5 +1,7 @@
 <?php
 
+// affichage des horaires sur l'index
+
 namespace Controllers;
 
 class AccueilControllers extends Footer

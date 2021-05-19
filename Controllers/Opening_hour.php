@@ -1,5 +1,8 @@
 <?php
 
+
+// affiche des horaires pour modf ds le back
+
 namespace Controllers;
 
 class Opening_hour extends Footer

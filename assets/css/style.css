@@ -810,7 +810,7 @@ VERSION DESKTOP
 		padding: 2rem 5rem;
 	}
 	
-	header .container {
+	.container header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;

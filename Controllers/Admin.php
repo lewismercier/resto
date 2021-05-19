@@ -93,7 +93,7 @@ class Admin extends Footer
             include 'views/layout.phtml';
    
         }
-    }
+    
     public function deconexion()
     {
         session_destroy();

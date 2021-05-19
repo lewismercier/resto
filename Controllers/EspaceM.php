@@ -2,10 +2,15 @@
 
 namespace Controllers;
 
-class EspaceM
+class EspaceM extends Footer
 {
 	
+	
+	
+	use Session;
+	
 	private $modelUsers;
+	public $logo;
 	
 
 	
@@ -13,19 +18,20 @@ class EspaceM
 	
 	public function __construct()
 	{
+		parent::__construct();
 		$this -> modelUsers = new \Models\EspaceM();
-	}
+		$this->logo= $this->logo();
+		
+		$this-> open = $this-> getHour();
+		
+		$this->contact = $this->getContact();
+		
+		$this->city = $this->getCity();
+		
+		$this->tel = $this -> getTel();
 	
-	if(isset($_POST["login"] == $email["login"])
-      {
-            
-      }
-      else
-      {
-            $message="identifiant déjà utilisé";   
-      }
-      
-      
+
+	}
 	
 	public function Connect()
 	{
@@ -54,7 +60,7 @@ class EspaceM
 	            	}
 	            	else
 	            	{
-	            		$message 'identifiant déjà utilisé';
+	            		$message = 'identifiant déjà utilisé';
 	            	}
 			}
 		

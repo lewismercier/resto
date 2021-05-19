@@ -62,3 +62,10 @@ Chacun s'occupe d'une partie côté back office:
 - les horaires
 - 
 A chaque fois, on arrive sur un tableau nous affichant ce qui existe et dessus un bouton pour ajouter un nouveau. A côté de chaque existant, la possibilité de le modifier ou de le supprimer.
+
+
+/*** SLIDER sur le front***/
+
+1) Dans accueilController, dans la méthode display, rappeler la méthode d'un model qui permet de récupérer les sliders que l'on veut afficher sur la page d'accueil (stocker ces sliders dans une variable)
+2) Dans accueil.phtml, à l'endroit où sont générer les images du slider, faire une boucle foreach pour parcourir la variable créée précédemment. Cette boucle doit afficher dynamiquement les images du slider. Les parties dynamiques sont le src et le alt.
+

@@ -20,7 +20,10 @@ public function getConfigById(int $id)
   
   return $this->findOne("SELECT id, name, content FROM config WHERE id=?",[$id]);
 }
-
+public function getContent($name)
+{
+    return $this->findOne("SELECT id, name, content FROM config WHERE name like ?",[$name]);
+}
 public function insertConfig(array $params):string
 {
   return $this->insertData("INSERT INTO config(name,content) 
@@ -30,7 +33,7 @@ public function insertConfig(array $params):string
 public function updateConfig(array $params):string
 
 {
-  return $this->updateData("UPDATE config SET name=?, content=? WHERE id=?",$params);
+  return $this->updateData("UPDATE config SET content=? WHERE id=?",$params);
   
 }
 public function deleteConfig(array $params):string

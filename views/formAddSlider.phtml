@@ -1,25 +1,25 @@
-<h1>Slider Management</h1>
+<h1>Gestion des sliders</h1>
 	<!-- si pas d'attribut action, par défaut, la soumission du formulaire fait un rechargement de la même page-->
 	<form method="post" enctype="multipart/form-data">
 		<p>
-			<label for='image'>Choose image to upload</label>
+			<label for='image'>Charger l'image</label>
 			<input type="file"name="image" id="image" >
-			<input type="hidden" name="imgbdd" value="<?= (isset($slider))?$slider['src']:""?>">
+			<input type="hidden" name="imgbdd" value="<?=(isset($slider))?$slider['src']:""?>">
 		</p>
 		<p>
 			<!--type text-->
-			<label for='alt'>Title</label>
+			<label for='alt'>Titre</label>
 			<input type="text" name="alt" id="alt" value="<?=(isset($slider))?$slider['alt']:""?>">
 		</p>
 		<p>
-			<label for='published'>Check to publish</label>
+			<label for='published'>Publier?..</label>
 			<!-- si slider['published'] est egal à 1 alors on echo checked sinon rien-->
 			<input type="checkbox" name="published" id="published" <?= (isset($slider) && $slider['published']==1)?'checked':""?>>
 		</p>
 		<p>
-			<label for='poids'>Order</label>
+			<label for='poids'>Ordre</label>
 			<input type="Number" name="poids" id="poids" value="<?=(isset($slider))?$slider['poids']:""?>">
 		</p>
-		
-		<button type="submit">Create/Modify slider</button>
+		<input type="submit" name="Ajouter"/>
+		<!--<button type="submit">Create/Modify slider</button>-->
 	</form>

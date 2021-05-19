@@ -7,7 +7,7 @@ spl_autoload_register(function($class){//$class = Controllers\AccueilController 
     include str_replace("\\","/",$class).".php";//$class = Controllers/AccueilController.php     /Models/Admin.php
 });
 
-
+include "Controllers/Session.php";
 session_start();
 
 /*
@@ -29,24 +29,22 @@ if(!isset($_GET['page']))
 }
 else
 {
-
-    //tester le param page avec le switch
-    switch ($_GET['page'])
-    {
-        
-        //connexion admin
-        case'Admin':
-            $controller = new Controllers\Admin();
-            $controller -> connect();
-            break;
-        case'deco':
+	//tester le param page avec le switch
+	switch ($_GET['page'])
+	{
+		//Admin
+		case'Admin':
+			$controller = new Controllers\Admin();
+			$controller -> connect();
+			break;
+		case'deco':
 			$controller = new Controllers\Admin();
 			$controller -> deconexion();
 			break;
-
+		//Dashboard	
 		case'Dashboard':
-			$controller = new Controllers\Admin();
-			$controller -> Dashboard();
+			$controller = new Controllers\Dashboard();
+			$controller -> display();
 			break;
         
         //SLIDER
@@ -136,7 +134,28 @@ else
 			$controller = new Controllers\Opening_hour();
 			$controller -> submit();
 			break;
+
 			
+		//MEAL 
+		case 'Meal':
+			$controller = new Controllers\Meal();
+			$controller -> display();
+			break;
+			
+		case'submitMeal':
+			$controller = new Controllers\Meal();
+			$controller -> submit();
+			break;
+			
+		case 'modifyMeal':
+			$controller = new Controllers\Meal();
+			$controller -> modify($_GET['id']);
+			break;
+			
+		case 'deleteMeal':
+			$controller = new Controllers\Meal();
+			$controller-> deleteMeal($_GET['id']);
+			break;
 			//MENUS
 			
 	    case'Menus':
@@ -158,8 +177,40 @@ else
             $controller = new Controllers\Menus();
             $controller -> suppMenus($_GET['id']);
             break;  
-        
-		
-	}
+			
+		//about 
 
+		case'espaceM':
+			$controller = new Controllers\EspaceM();
+			$controller -> Connect();
+			break;
+		case'DashboardUsers':
+			$controller = new Controllers\DashboardUsers();
+			$controller -> display();
+			break;
+		case'reservation':
+			$controller = new Controllers\Reservation();
+			$controller -> display();
+			break;
+
+		
+		case 'about':
+			$controller = new Controllers\AccueilControllers();
+			$controller -> about();
+			break;
+	
+		//menus
+		
+		case 'menus':
+			$controller = new Controllers\AccueilControllers();
+			$controller -> menus();
+			break;
+			
+		//contact
+		
+		case 'contact': 
+			$controller = new Controllers\AccueilControllers();
+			$controller -> contact();
+			break;
+	}
 }

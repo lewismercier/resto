@@ -1,0 +1,51 @@
+ <section>
+                <h1>Gestion des plats</h1>
+                
+                
+        </section>
+                <p>
+                <a class="btn-add" href ="index.php?page=submitMeal"><i class="fas fa-plus"></i>Créer un plat</a></p>
+            
+        <table>
+                <tr>
+                    <td>id</td>
+                    <td>Nom du plat</td>
+                    <td>Photo</td>
+                    <td>Nom alternatif pour le plat</td>
+                    <td>id_category</td>
+                    <td>Modifier</td>
+                    <td>Supprimer</td>
+                </tr>
+                <!--Tu as besoin juste d'un seul foreach et c'est bon-->
+                <?php foreach($meals as $meal):?>
+                <tr class="bg-standar">
+                    <td>
+                    <?= htmlspecialchars($meal['id']) ?> 
+                    </td>
+                    <td>
+                    <?= htmlspecialchars($meal['name']) ?> 
+                    </td>
+                    <td>
+                     <img class="miniatures" src="<?= htmlspecialchars($meal['src'])?>">  
+                    </td>
+                    <td>
+                    <?= htmlspecialchars($meal['alt'])?> 
+                    </td>
+                    <td>
+                    <?= htmlspecialchars($meal['id_category']) ?> 
+                    </td>
+                    
+                    
+                    
+                    <td><a class="modify" href="index.php?page=modifyMeal&id=<?= htmlspecialchars($meal['id']) ?> "><i class="fas fa-pen-nib btn-modify"></i></a></td>
+                    
+                    <!-- lien qui appelle la page trash et qui transmet l'id du plat à supprimer  -->
+                    
+                    <td><a class="confirmButton" data-url="index.php?page=deleteMeal&id=<?= htmlspecialchars($meal['id']) ?>"><i class="fas fa-trash-alt btn-error"></i></a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+               
+        </table>
+             
+       

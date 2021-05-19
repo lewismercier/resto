@@ -15,11 +15,13 @@
 		<p>
 			<label for='image'>Image</label>
 			<input type="file" name="image" id="image">
+			<?= (isset($menus))?"<img src='".$menus['src']."' alt='".$menus['alt']."'/>":"" ?>
+			<input type="hidden" name="imgbdd" value="<?= (isset($menus))?$menus['src']:"" ?>"/>
 		</p>
 		
 		
 		
-		<p class="contenu">
+		<p>
 			<label for='uname'>Description de l'image</label>
       		
       		<input type="text" id="uname" name="alt"<?= (isset($menus))?$menus['alt']:""?>

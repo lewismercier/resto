@@ -2,14 +2,38 @@
 
 namespace Controllers;
 
-class Slider
+class Slider extends Footer
 {
-    
+	public $open;
+	public $contact;
+	public $city;
+	public $tel;
+	private $model;
+	
+	use Session;
+  
+      public function __construct()
+  	    {
+  	    	
+	  	    parent::__construct();
+			$this-> open = $this-> getHour();
+			
+			$this->contact = $this->getContact();
+			
+			$this->city = $this->getCity();
+			
+			$this->tel = $this -> getTel();
+			
+	  		$this -> redirectIfNotAdmin();
+	  		$this->model=new \Models\Slider();
+	  		$this->setAdminPage();
+	  		$_SESSION['class']="adslider";
+  	    } 
 	public function display()
 	{
-	$model = new \Models\Slider();
-	$sliders = $model->getSlider();
 	
+	$sliders = $this-> model-> getSlider();
+	$appercu=$this->model->getSlidpub();
 	$template = "listSlider.phtml";
 	include "views/layout.phtml";
 	}
@@ -40,8 +64,10 @@ class Slider
 		
 		
 		//mettre les datas en bdd
-		$modelSlider = new \Models\Slider();
-		$modelSlider -> insertSlider([$image, $alt, $poids, $published]);
+		
+		$this->model-> insertSlider([$image, $alt, $poids, $published]);
+		header("location:index.php?page=Slider");
+	    exit;
 		}
 	
 		$template = "formAddSlider.phtml";
@@ -50,8 +76,8 @@ class Slider
 	
 	public function modify($id)
 	{
-		$model = new \Models\Slider();
-		$slider = $model->getOneSlider($id);
+		
+		$slider = $this->model->getOneSlider($id);
 		
 		if(!empty($_POST))
 		{
@@ -80,7 +106,7 @@ class Slider
 				}
 			
 	
-			$slider = $model->updateSlider([$image,$alt,$poids,$published,$id]);
+			$this->model->updateSlider([$image,$alt,$poids,$published,$id]);
 			
 			//redirection header location...
 			header("location:index.php?page=Slider");
@@ -94,10 +120,14 @@ class Slider
 	public function trash($id)
 	{
 	
-		$model = new \Models\Slider();
-		$slider = $model->deleteSlider([$id]);
+		
+		$this->model->deleteSlider([$id]);
 	
 		header("location:index.php?page=Slider");
     	exit;
+	}
+	public function setPublished($id)
+	{
+		
 	}
 }

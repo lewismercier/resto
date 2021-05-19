@@ -10,9 +10,9 @@
   
   <h2>Menus</h2>
   
- 
-  <a href="index.php?page=Addmenus">AJOUTER UN MENU</a>
-  <table class="table"> <!--tableau menu-->
+   <p>  
+  <a class="btn-add" href="index.php?page=Addmenus"><i class="fas fa-plus"></i>AJOUTER UN MENU</a></p>
+  <table> <!--tableau menu-->
  <tr class="tr">
    <th>titre</th>
    <th>image</th>
@@ -28,7 +28,7 @@
  
     	<?php foreach($menus as $menu): ?>
 		
-		 <tr>
+		 <tr class="bg-standar">
 		   
 	    
 	     <td><?= htmlspecialchars($menu['title']) ?></td>
@@ -36,8 +36,8 @@
 	     <td><?= htmlspecialchars($menu['alt']) ?></td>
 	     <td><?= htmlspecialchars($menu['price']) ?></td>
 	     
-	     <td><a href=index.php?page=Modifmenus&id=<?=$menu['id'] ?>><i class="fas fa-pen-nib"></i></a></td>
-         <td><a href=index.php?page=Suppmenus&id=<?=$menu['id'] ?>><i class="fas fa-trash-alt"></i></a></td>
+	     <td><a href=index.php?page=Modifmenus&id=<?=$menu['id'] ?>><i class="fas fa-pen-nib btn-modify"></i></a></td>
+         <td><a class="confirmButton" data-url=index.php?page=Suppmenus&id=<?=$menu['id'] ?>><i class="fas fa-trash-alt btn-error"></i></a></td>
 	    </tr>
 		
 		<?php endforeach; ?>

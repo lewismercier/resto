@@ -35,7 +35,7 @@ public function updateConfig(array $params):string
 }
 public function deleteConfig(array $params):string
 {
-   return $this->deleteData("DELETE FROM config WHERE id=?",$params);
+  return $this->deleteData("DELETE FROM config WHERE id=?",$params);
 }
 
 }

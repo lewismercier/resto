@@ -144,17 +144,17 @@ else
             $controller -> display();
             break;  
             
-        case'Ajouter':
+        case'Addmenus':
             $controller = new Controllers\Menus();
             $controller -> addMenus();
             break;
             
-        case'modifier':
+        case'Modifmenus':
             $controller = new Controllers\Menus();
             $controller -> modifMenus($_GET['id']);
             break;
             
-        case'supprimer':
+        case'Suppmenus':
             $controller = new Controllers\Menus();
             $controller -> suppMenus($_GET['id']);
             break;  

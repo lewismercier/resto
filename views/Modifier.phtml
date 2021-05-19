@@ -7,17 +7,26 @@
 		<h1>Configuration</h1>
 		<form method="post">
 		<p class="nom">
-			<label for='nom'>Name</label>
+			<label for='nom'>Nom</label>
 			<input type="text" name="nom" id="nom" value="<?= (isset($config))?$config['name']:"" ?>" <?= (isset($config))?'disabled':"" ?>>
 		</p>
 		<p class="contenu">
-			<label for='contenu'>content</label>
-			<textarea id="contenu" name="contenu"><?= (isset($config))?$config['content']:""?></textarea>
-		</p>
+			<label for='uname'>contenu</label>
+			<textarea name="nom"><?= (isset($config))?$config['content']:"Placez ici votre texte, image ou coordonnées"?></textarea>
 		
+			
 		<p>
-		  <input type="submit" name="Ajouter"/>
+			<input type="file" id="image" name="contenu"/>
+			
+		</p>	
 		
-	    <!--<input type="reset" name="Supprimer"/></p>-->
+		</p>
+			
+		<p>
+			<input type="submit" value="ENVOYER">
+		  
+		</p>
+	
+	 </form>
 	</Section>
 </main>	

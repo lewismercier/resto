@@ -1,0 +1,54 @@
+<main>
+	
+	
+	
+	<Section>
+		
+		<h1>Menus</h1>
+		
+		<form method="post" enctype="multipart/form-data">  
+		<p class="nom">
+			<label for='nom'>Titre</label>
+		
+			<input type="text" name="title" id="nom" value="<?= (isset($menus))?$menus['title']:"" ?>">
+		</p>
+		<p>
+			<label for='image'>Image</label>
+			<input type="file" name="image" id="image">
+		</p>
+		
+		
+		
+		<p class="contenu">
+			<label for='uname'>Description de l'image</label>
+      		
+      		<input type="text" id="uname" name="alt"<?= (isset($menus))?$menus['alt']:""?>
+      		       placeholder="décrivez brièvement ce que contient l'image">
+		</p>
+	
+		<p>
+			<label for="price">Prix</label>
+			<input type="text" name="price" id="price">
+		</p>
+		
+
+<label for="category-select">Choisissez une catégorie:</label>
+<select name="id_category">
+
+
+
+    	<?php foreach($select as $category): ?>
+
+
+    <option  value="<?= $category['id']?>"><?= $category['name']?></option>
+   
+	<?php endforeach; ?>
+</select>
+
+		<p>
+		  
+		  <input type="submit" value="ENVOYER">
+		</p>
+	    	</form>
+	</Section>
+</main>	

@@ -1,0 +1,17 @@
+# activation de la réécriture d'urls
+Options +FollowSymlinks
+RewriteEngine on
+
+
+# un commentaire
+RewriteRule ^admin$  index.php?page=Admin [L]
+RewriteRule ^accueil index.php [L]
+RewriteRule ^Accueil index.php [L]
+RewriteRule ^Config/([0-9]+)$  index.php?page=modifier&id=$1 [L]
+RewriteRule ^Config  index.php?page=Config [L]
+RewriteRule ^dashboard index.php?page=Dashboard [L]
+RewriteRule ^categorie index.php?page=MealCategory [L]
+RewriteRule ^categorie/([0-9]+)$ index.php?page=modifyCategory&id=$1 [L]
+RewriteRule ^slider index.php?page=Slider [L]
+RewriteRule ^slider/([0-9]+)$ index.php?page=modifySlider&id=7 [L]
+

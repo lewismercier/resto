@@ -44,8 +44,8 @@ class Config
 
 $template = 'views/Config.phtml';
 include 'views/layout.phtml';
-  }
   
+  }  
   public function addConfig()
   {
       $model = new \Models\Config();
@@ -77,7 +77,6 @@ include 'views/layout.phtml';
       {
       
       	
-	      //appelé la fonction insertion
 	   $model -> updateConfig([$_POST['nom'], $_POST['contenu'],$id]);
 	   
 	    	header('location:index.php?page=Config'); 
